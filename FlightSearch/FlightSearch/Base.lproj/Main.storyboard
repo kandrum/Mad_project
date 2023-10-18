@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F9d-Es-gcG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xCf-uE-slv">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
@@ -9,123 +9,116 @@
     </dependencies>
     <scenes>
         <!--Item-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="yVe-v6-pTC">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FlightSearch" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" userInteractionEnabled="NO" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GradientView" customModule="FlightSearch" customModuleProvider="target">
+                <viewController id="yoH-yf-C9b" customClass="OneWayViewController" customModule="FlightSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iOM-ir-tl7">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="tAk-Ug-fS9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="ncT-EM-Dd7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G8K-LC-JrT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1208" y="465"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="NX6-JR-tl5">
+            <objects>
+                <viewController id="zRX-MF-7BL" customClass="RoundTripViewController" customModule="FlightSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Apq-3P-SYV">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="crX-Gm-qEx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="7XC-qx-PGg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fLb-JL-umr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-260" y="465"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Xdf-9z-Ky2">
+            <objects>
+                <viewController id="pEP-7h-XJg" customClass="MultiCityViewController" customModule="FlightSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iLW-nW-gwe">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Flight" translatesAutoresizingMaskIntoConstraints="NO" id="jN1-Uq-caZ">
-                                <rect key="frame" x="0.0" y="59" width="393" height="271"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GdE-I4-dBe">
+                                <rect key="frame" x="39" y="190" width="239" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Lets Fly cheap" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eTn-1c-71v">
-                                <rect key="frame" x="16" y="90" width="306" height="66"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="OEo-YO-dAi">
+                                <rect key="frame" x="16" y="210" width="140" height="104"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="jMw-FL-yjN">
+                                <rect key="frame" x="176" y="213" width="141" height="98"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qoh-6r-CwS">
+                                <rect key="frame" x="257" y="307" width="97" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="AddFlight"/>
+                                <connections>
+                                    <action selector="AddFlight:" destination="pEP-7h-XJg" eventType="touchUpInside" id="PeM-Z5-l7G"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HIM-YX-J9h">
+                                <rect key="frame" x="39" y="123" width="239" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="FromMulti:" destination="zib-F0-ahS" eventType="editingDidEnd" id="GbX-Dg-juZ"/>
+                                </connections>
+                            </textField>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="Mc9-A0-OLb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="PBk-e8-fr4"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="qol-1l-N9n"/>
+                    <connections>
+                        <outlet property="AddFlight" destination="Qoh-6r-CwS" id="Lus-iI-8pQ"/>
+                        <outlet property="DepatureMulti" destination="OEo-YO-dAi" id="LCB-1H-4dB"/>
+                        <outlet property="FromMulti" destination="HIM-YX-J9h" id="yp4-KC-Jjo"/>
+                        <outlet property="ReturnMulti" destination="jMw-FL-yjN" id="CYl-LJ-J0m"/>
+                        <outlet property="ToMulti" destination="GdE-I4-dBe" id="ao5-88-Xsl"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Yv-Fk-fSO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="zib-F0-ahS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-845.03816793893122" y="734.50704225352115"/>
+            <point key="canvasLocation" x="719.84732824427476" y="464.78873239436621"/>
         </scene>
         <!--Tab Bar Controller-->
-        <scene sceneID="f9c-Kh-DSf">
+        <scene sceneID="aLK-zN-RTn">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="F9d-Es-gcG" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="xCf-uE-slv" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YmB-Pd-vPE">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uxZ-2a-NPQ">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="2RC-2d-xZi"/>
-                        <segue destination="uSk-iY-7Fk" kind="relationship" relationship="viewControllers" id="lOQ-FV-PVY"/>
-                        <segue destination="M6K-jP-yOf" kind="relationship" relationship="viewControllers" id="85a-gc-nwx"/>
+                        <segue destination="yoH-yf-C9b" kind="relationship" relationship="viewControllers" id="z34-Pd-LLH"/>
+                        <segue destination="zRX-MF-7BL" kind="relationship" relationship="viewControllers" id="Sbc-tx-4I3"/>
+                        <segue destination="pEP-7h-XJg" kind="relationship" relationship="viewControllers" id="ABF-Eh-7AY"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i2Q-Xc-M22" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IIQ-gy-g2f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20.610687022900763" y="3.5211267605633805"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="dJn-PB-6gN">
-            <objects>
-                <viewController id="uSk-iY-7Fk" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="muI-8P-rYx" customClass="GradientView" customModule="FlightSearch" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Flight" translatesAutoresizingMaskIntoConstraints="NO" id="ERm-kF-9Ju">
-                                <rect key="frame" x="0.0" y="59" width="393" height="271"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Lets Fly Cheap" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VsH-nQ-GSg">
-                                <rect key="frame" x="16" y="76" width="292" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Nhy-MH-Lmm"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Vds-9j-HX5"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VTz-FR-K7l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="20.610687022900763" y="734.50704225352115"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="Jqf-Xn-EIj">
-            <objects>
-                <viewController id="M6K-jP-yOf" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ko8-Pu-q4A" customClass="GradientView" customModule="FlightSearch" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Flight" translatesAutoresizingMaskIntoConstraints="NO" id="1dz-Gd-bGP">
-                                <rect key="frame" x="-12" y="59" width="405" height="269"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Lets Fly Cheap" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ncp-WN-NX2">
-                                <rect key="frame" x="16" y="72" width="286" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="8wJ-E9-aje"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Wkn-zX-M0E"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="80F-b9-Hir" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="933.58778625954199" y="734.50704225352115"/>
+            <point key="canvasLocation" x="-260.30534351145036" y="-274.64788732394368"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Flight" width="5184" height="3456"/>
-        <systemColor name="darkTextColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
