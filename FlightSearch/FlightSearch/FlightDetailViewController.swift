@@ -14,8 +14,8 @@ class FlightDetailViewController: UIView {
     @IBOutlet weak var Depature: UIDatePicker!
     @IBOutlet weak var To: UITextField!
     
-    class func instanceFromNib() -> FlightDetailViewController {
-        return UINib(nibName: "FlightDetailViewController", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! FlightDetailViewController
+    class func instanceFromNib() -> FlightDetailViewController{
+        return UINib(nibName: "FlightDetailViewControllers", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! FlightDetailViewController
     }
     /*
      // MARK: - Navigation

@@ -40,8 +40,7 @@ class MultiCityViewController: UIViewController {
         let flightDetailsView = FlightDetailViewController.instanceFromNib()
         
         // Adjust the position and size of the flightDetailsView
-        let yOffset = CGFloat(view.subviews.count) * flightDetailsView.bounds.height
-        flightDetailsView.frame = CGRect(x: 0, y: yOffset, width: view.bounds.width, height: flightDetailsView.bounds.height)
+        
         
         // Set the frame for From, To, Departure, and Return fields
         

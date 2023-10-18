@@ -12,6 +12,8 @@
 		5C6026232ADF6CA00015577F /* MultiCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6026222ADF6CA00015577F /* MultiCityViewController.swift */; };
 		5C6026252ADF778A0015577F /* FlightDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C6026242ADF778A0015577F /* FlightDetailsView.xib */; };
 		5C6026292ADF7C9D0015577F /* FlightDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6026282ADF7C9D0015577F /* FlightDetailViewController.swift */; };
+		5C60262A2ADF9E1D0015577F /* FlightDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6026282ADF7C9D0015577F /* FlightDetailViewController.swift */; };
+		5C60262D2ADF9E2C0015577F /* FlightDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6026282ADF7C9D0015577F /* FlightDetailViewController.swift */; };
 		5C9258B52ADE170200E067D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9258B42ADE170200E067D9 /* AppDelegate.swift */; };
 		5C9258B72ADE170200E067D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9258B62ADE170200E067D9 /* SceneDelegate.swift */; };
 		5C9258BC2ADE170200E067D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C9258BA2ADE170200E067D9 /* Main.storyboard */; };
@@ -284,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C60262A2ADF9E1D0015577F /* FlightDetailViewController.swift in Sources */,
 				5C9258CC2ADE170500E067D9 /* FlightSearchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +297,7 @@
 			files = (
 				5C9258D82ADE170500E067D9 /* FlightSearchUITestsLaunchTests.swift in Sources */,
 				5C9258D62ADE170500E067D9 /* FlightSearchUITests.swift in Sources */,
+				5C60262D2ADF9E2C0015577F /* FlightDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
