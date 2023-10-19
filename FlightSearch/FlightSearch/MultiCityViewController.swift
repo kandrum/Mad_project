@@ -4,6 +4,7 @@
 //
 //  Created by Kandru, Mounika Preethi on 10/17/23.
 //
+
 import UIKit
 
 class MultiCityViewController: UIViewController {
@@ -13,10 +14,31 @@ class MultiCityViewController: UIViewController {
     @IBOutlet weak var ToMulti: UITextField!
     @IBOutlet weak var ReturnMulti: UIDatePicker!
     @IBOutlet weak var DepatureMulti: UIDatePicker!
+
+    var yOffset: CGFloat = 300 // Starting point for dynamic elements, adjust accordingly
+    var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientLayer()
+        
+        // Initialize and setup the scroll view
+        scrollView = UIScrollView(frame: view.bounds)
+        scrollView.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height)
+        view.addSubview(scrollView)
+        
+        // Add initial UI elements to the scrollView
+        scrollView.addSubview(FromMulti)
+        scrollView.addSubview(AddFlight)
+        scrollView.addSubview(ToMulti)
+        scrollView.addSubview(ReturnMulti)
+        scrollView.addSubview(DepatureMulti)
+        
+        // Bring AddFlight button to front to ensure it's clickable
+        scrollView.bringSubviewToFront(AddFlight)
+        
+        // Ensuring AddFlight button calls the function
+        AddFlight.addTarget(self, action: #selector(AddFlight(_:)), for: .touchUpInside)
     }
     
     private func addGradientLayer() {
@@ -33,19 +55,37 @@ class MultiCityViewController: UIViewController {
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    @IBAction func AddFlight(_ sender: Any) {
-        addFlightDetailsView()
-    }
-    private func addFlightDetailsView() {
-        let flightDetailsView = FlightDetailViewController.instanceFromNib()
-        
-        // Adjust the position and size of the flightDetailsView
-        
-        
-        // Set the frame for From, To, Departure, and Return fields
-        
-        view.addSubview(flightDetailsView)
-    }
-    
-}
+    @objc @IBAction func AddFlight(_ sender: Any) {
+        let fromTextField = UITextField(frame: CGRect(x: 20, y: yOffset, width: scrollView.frame.width - 120, height: 40))
+        fromTextField.placeholder = "From"
+        fromTextField.borderStyle = .roundedRect
+        scrollView.addSubview(fromTextField)
 
+        yOffset += 50
+            
+        let toTextField = UITextField(frame: CGRect(x: 20, y: yOffset, width: scrollView.frame.width - 120, height: 40))
+        toTextField.placeholder = "To"
+        toTextField.borderStyle = .roundedRect
+        scrollView.addSubview(toTextField)
+            
+        yOffset += 50
+        
+        // Departure Date Picker
+        let departureDatePickerWidth = scrollView.frame.width / 2
+        let departureDatePickerXPosition = 0
+        let departureDatePicker = UIDatePicker(frame: CGRect(x: CGFloat(departureDatePickerXPosition), y: yOffset, width: departureDatePickerWidth, height: 200))
+        departureDatePicker.datePickerMode = .date
+        scrollView.addSubview(departureDatePicker)
+        
+        // Return Date Picker
+        let returnDatePickerXPosition = scrollView.frame.width / 2
+        let returnDatePicker = UIDatePicker(frame: CGRect(x: returnDatePickerXPosition, y: yOffset, width: scrollView.frame.width / 2, height: 200))
+        returnDatePicker.datePickerMode = .date
+        scrollView.addSubview(returnDatePicker)
+        
+        yOffset += 100
+        
+        // Adjust the contentSize dynamically
+        scrollView.contentSize = CGSize(width: scrollView.bounds.width, height: yOffset + 50)
+    }
+}
