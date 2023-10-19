@@ -34,6 +34,8 @@ class MultiCityViewController: UIViewController {
         scrollView.addSubview(ReturnMulti)
         scrollView.addSubview(DepatureMulti)
         
+        FromMulti.placeholder = "From"
+        ToMulti.placeholder = "To"
         // Bring AddFlight button to front to ensure it's clickable
         scrollView.bringSubviewToFront(AddFlight)
         
@@ -56,31 +58,30 @@ class MultiCityViewController: UIViewController {
     }
     
     @objc @IBAction func AddFlight(_ sender: Any) {
-        let fromTextField = UITextField(frame: CGRect(x: 20, y: yOffset, width: scrollView.frame.width - 120, height: 40))
+        let fromTextField = UITextField(frame: CGRect(x: 20, y: yOffset, width: scrollView.frame.width - 150, height: 40))
         fromTextField.placeholder = "From"
         fromTextField.borderStyle = .roundedRect
         scrollView.addSubview(fromTextField)
 
         yOffset += 50
             
-        let toTextField = UITextField(frame: CGRect(x: 20, y: yOffset, width: scrollView.frame.width - 120, height: 40))
-        toTextField.placeholder = "To"
-        toTextField.borderStyle = .roundedRect
+        let toTextField = UITextField(frame: CGRect(x: 20, y: yOffset, width: scrollView.frame.width - 150, height: 40))
         scrollView.addSubview(toTextField)
             
         yOffset += 50
+        toTextField.placeholder = "To"
+        toTextField.borderStyle = .roundedRect
         
-        // Departure Date Picker
         let departureDatePickerWidth = scrollView.frame.width / 2
-        let departureDatePickerXPosition = 0
-        let departureDatePicker = UIDatePicker(frame: CGRect(x: CGFloat(departureDatePickerXPosition), y: yOffset, width: departureDatePickerWidth, height: 200))
+        let departureDatePicker = UIDatePicker(frame: CGRect(x: -80, y: yOffset, width: departureDatePickerWidth, height: 200))
         departureDatePicker.datePickerMode = .date
         scrollView.addSubview(departureDatePicker)
         
         // Return Date Picker
-        let returnDatePickerXPosition = scrollView.frame.width / 2
+        let returnDatePickerXPosition = scrollView.frame.width / 3
         let returnDatePicker = UIDatePicker(frame: CGRect(x: returnDatePickerXPosition, y: yOffset, width: scrollView.frame.width / 2, height: 200))
         returnDatePicker.datePickerMode = .date
+       
         scrollView.addSubview(returnDatePicker)
         
         yOffset += 100
@@ -88,4 +89,5 @@ class MultiCityViewController: UIViewController {
         // Adjust the contentSize dynamically
         scrollView.contentSize = CGSize(width: scrollView.bounds.width, height: yOffset + 50)
     }
+    
 }
