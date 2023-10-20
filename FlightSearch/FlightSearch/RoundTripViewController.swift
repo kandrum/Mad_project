@@ -9,9 +9,19 @@ import UIKit
 
 class RoundTripViewController: UIViewController {
 
-        override func viewDidLoad() {
+    
+    @IBOutlet weak var roundTripFrom: UITextField!
+    
+    @IBOutlet weak var roundTripTo: UITextField!
+    @IBOutlet weak var roundTripDepartureDate: UIDatePicker!
+    @IBOutlet weak var roundTripReturnDate: UIDatePicker!
+    
+    
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-        addGradientLayer()        // Do any additional setup after loading the view.
+        addGradientLayer()
+            // Do any additional setup after loading the view.
     }
     private func addGradientLayer() {
             let gradientLayer = CAGradientLayer()
