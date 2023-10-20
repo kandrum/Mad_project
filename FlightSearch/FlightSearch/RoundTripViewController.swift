@@ -14,12 +14,13 @@ class RoundTripViewController: UIViewController {
     
     @IBOutlet weak var roundTripTo: UITextField!
     @IBOutlet weak var roundTripDepartureDate: UIDatePicker!
+    @IBOutlet weak var roundTripSearchButton: UIButton!
+    
     @IBOutlet weak var roundTripReturnDate: UIDatePicker!
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        roundTripFrom.placeholder = "From"
+        roundTripTo.placeholder = "To"
         addGradientLayer()
             // Do any additional setup after loading the view.
     }
@@ -42,6 +43,10 @@ class RoundTripViewController: UIViewController {
             view.layer.insertSublayer(gradientLayer, at: 0)
         }  
     
+    
+    @IBAction func btnAction(_ sender: Any) {
+        performSegue(withIdentifier: "roundTripToDisplay", sender: self)
+    }
     
     /*
     // MARK: - Navigation

@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="-1208" y="465"/>
         </scene>
-        <!--Item-->
+        <!--Round Trip View Controller-->
         <scene sceneID="NX6-JR-tl5">
             <objects>
                 <viewController id="zRX-MF-7BL" customClass="RoundTripViewController" customModule="FlightSearch" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,20 +52,48 @@
                                 <rect key="frame" x="156" y="184" width="221" height="99"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewt-np-lvW">
+                                <rect key="frame" x="141" y="283" width="78" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Search"/>
+                                <connections>
+                                    <action selector="btnAction:" destination="zRX-MF-7BL" eventType="touchUpInside" id="uVq-Pf-bbc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="crX-Gm-qEx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="7XC-qx-PGg"/>
+                    <navigationItem key="navigationItem" id="dNX-Nb-q2u"/>
                     <connections>
                         <outlet property="roundTripDepartureDate" destination="jIh-Hy-5QM" id="Wle-sX-nbA"/>
                         <outlet property="roundTripFrom" destination="Gcb-uW-uH2" id="vgH-0v-k1e"/>
+                        <outlet property="roundTripReturnDate" destination="SFG-IN-dEb" id="brW-s2-gsJ"/>
+                        <outlet property="roundTripSearchButton" destination="ewt-np-lvW" id="Sxs-Yi-cmx"/>
                         <outlet property="roundTripTo" destination="kId-gA-NCU" id="Z6m-Dn-49y"/>
+                        <segue destination="yex-dR-UCV" kind="push" identifier="roundTripToDisplay" id="wBZ-m5-S4V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLb-JL-umr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-260.30534351145036" y="464.78873239436621"/>
+            <point key="canvasLocation" x="666.41221374045801" y="464.78873239436621"/>
+        </scene>
+        <!--Round Trip Display View Controller-->
+        <scene sceneID="oL7-Ee-yoO">
+            <objects>
+                <viewController id="yex-dR-UCV" customClass="RoundTripDisplayViewController" customModule="FlightSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uJr-hJ-0ZE">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="jyt-oZ-E7h"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9sN-d9-BVK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1N8-vb-x4C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="666" y="1247"/>
         </scene>
         <!--Multi City View Controller-->
         <scene sceneID="Xdf-9z-Ky2">
@@ -133,7 +161,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Yv-Fk-fSO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="zib-F0-ahS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1634" y="465"/>
+            <point key="canvasLocation" x="2559.5419847328244" y="464.78873239436621"/>
         </scene>
         <!--Multi Display View Controller-->
         <scene sceneID="1c5-Sd-3Gd">
@@ -149,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B4I-5b-BK3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2447" y="465"/>
+            <point key="canvasLocation" x="3373.2824427480914" y="464.78873239436621"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="aLK-zN-RTn">
@@ -163,7 +191,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="yoH-yf-C9b" kind="relationship" relationship="viewControllers" id="z34-Pd-LLH"/>
-                        <segue destination="zRX-MF-7BL" kind="relationship" relationship="viewControllers" id="Sbc-tx-4I3"/>
+                        <segue destination="ULN-fK-OJn" kind="relationship" relationship="viewControllers" id="Sbc-tx-4I3"/>
                         <segue destination="8cx-HF-tub" kind="relationship" relationship="viewControllers" id="ABF-Eh-7AY"/>
                     </connections>
                 </tabBarController>
@@ -188,7 +216,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edD-Ab-5XY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="719.84732824427476" y="464.78873239436621"/>
+            <point key="canvasLocation" x="1646.5648854961833" y="464.78873239436621"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="XfN-U3-qu6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ULN-fK-OJn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="7XC-qx-PGg"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ljp-aC-NV2">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zRX-MF-7BL" kind="relationship" relationship="rootViewController" id="a3L-VB-5Ct"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hFz-hi-PdD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-260.30534351145036" y="464.78873239436621"/>
         </scene>
     </scenes>
     <resources>
