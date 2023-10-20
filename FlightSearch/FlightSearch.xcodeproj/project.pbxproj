@@ -10,6 +10,8 @@
 		5C60261F2ADF6C670015577F /* OneWayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C60261E2ADF6C670015577F /* OneWayViewController.swift */; };
 		5C6026212ADF6C8A0015577F /* RoundTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6026202ADF6C8A0015577F /* RoundTripViewController.swift */; };
 		5C6026232ADF6CA00015577F /* MultiCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6026222ADF6CA00015577F /* MultiCityViewController.swift */; };
+		5C7710972AE179EA0042A127 /* image_processing20210901-26953-3uuj8z.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5C7710962AE179EA0042A127 /* image_processing20210901-26953-3uuj8z.gif */; };
+		5C77109F2AE20CE90042A127 /* MultiDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C77109E2AE20CE90042A127 /* MultiDisplayViewController.swift */; };
 		5C9258B52ADE170200E067D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9258B42ADE170200E067D9 /* AppDelegate.swift */; };
 		5C9258B72ADE170200E067D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9258B62ADE170200E067D9 /* SceneDelegate.swift */; };
 		5C9258BC2ADE170200E067D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C9258BA2ADE170200E067D9 /* Main.storyboard */; };
@@ -41,6 +43,8 @@
 		5C60261E2ADF6C670015577F /* OneWayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneWayViewController.swift; sourceTree = "<group>"; };
 		5C6026202ADF6C8A0015577F /* RoundTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTripViewController.swift; sourceTree = "<group>"; };
 		5C6026222ADF6CA00015577F /* MultiCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiCityViewController.swift; sourceTree = "<group>"; };
+		5C7710962AE179EA0042A127 /* image_processing20210901-26953-3uuj8z.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "image_processing20210901-26953-3uuj8z.gif"; sourceTree = "<group>"; };
+		5C77109E2AE20CE90042A127 /* MultiDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiDisplayViewController.swift; sourceTree = "<group>"; };
 		5C9258B12ADE170200E067D9 /* FlightSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C9258B42ADE170200E067D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C9258B62ADE170200E067D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 			children = (
 				5C9258B42ADE170200E067D9 /* AppDelegate.swift */,
 				5C9258B62ADE170200E067D9 /* SceneDelegate.swift */,
+				5C7710962AE179EA0042A127 /* image_processing20210901-26953-3uuj8z.gif */,
 				5C9258BA2ADE170200E067D9 /* Main.storyboard */,
 				5C9258BD2ADE170500E067D9 /* Assets.xcassets */,
 				5C9258BF2ADE170500E067D9 /* LaunchScreen.storyboard */,
@@ -112,6 +117,7 @@
 				5C60261E2ADF6C670015577F /* OneWayViewController.swift */,
 				5C6026202ADF6C8A0015577F /* RoundTripViewController.swift */,
 				5C6026222ADF6CA00015577F /* MultiCityViewController.swift */,
+				5C77109E2AE20CE90042A127 /* MultiDisplayViewController.swift */,
 			);
 			path = FlightSearch;
 			sourceTree = "<group>";
@@ -240,6 +246,7 @@
 				5C9258C12ADE170500E067D9 /* LaunchScreen.storyboard in Resources */,
 				5C9258BE2ADE170500E067D9 /* Assets.xcassets in Resources */,
 				5C9258BC2ADE170200E067D9 /* Main.storyboard in Resources */,
+				5C7710972AE179EA0042A127 /* image_processing20210901-26953-3uuj8z.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +275,7 @@
 				5C9258B52ADE170200E067D9 /* AppDelegate.swift in Sources */,
 				5C6026212ADF6C8A0015577F /* RoundTripViewController.swift in Sources */,
 				5C9258B72ADE170200E067D9 /* SceneDelegate.swift in Sources */,
+				5C77109F2AE20CE90042A127 /* MultiDisplayViewController.swift in Sources */,
 				5C6026232ADF6CA00015577F /* MultiCityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

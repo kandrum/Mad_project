@@ -14,33 +14,22 @@ class MultiCityViewController: UIViewController {
     @IBOutlet weak var ToMulti: UITextField!
     @IBOutlet weak var ReturnMulti: UIDatePicker!
     @IBOutlet weak var DepatureMulti: UIDatePicker!
-
     var yOffset: CGFloat = 300 // Starting point for dynamic elements, adjust accordingly
-    var scrollView: UIScrollView!
-    
+    var addFlightClickCount = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientLayer()
         
-        // Initialize and setup the scroll view
-        scrollView = UIScrollView(frame: view.bounds)
-        scrollView.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height)
-        view.addSubview(scrollView)
-        
-        // Add initial UI elements to the scrollView
-        scrollView.addSubview(FromMulti)
-        scrollView.addSubview(AddFlight)
-        scrollView.addSubview(ToMulti)
-        scrollView.addSubview(ReturnMulti)
-        scrollView.addSubview(DepatureMulti)
-        
         FromMulti.placeholder = "From"
         ToMulti.placeholder = "To"
-        // Bring AddFlight button to front to ensure it's clickable
-        scrollView.bringSubviewToFront(AddFlight)
         
         // Ensuring AddFlight button calls the function
-        AddFlight.addTarget(self, action: #selector(AddFlight(_:)), for: .touchUpInside)
+        AddFlight.addTarget(self, action: #selector(AddFlightAction(_:)), for: .touchUpInside)
+    }
+    
+    @IBAction func SearchAction(_ sender: Any) {
+        performSegue(withIdentifier: "segue1", sender: self)
     }
     
     private func addGradientLayer() {
@@ -57,37 +46,41 @@ class MultiCityViewController: UIViewController {
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    @objc @IBAction func AddFlight(_ sender: Any) {
-        let fromTextField = UITextField(frame: CGRect(x: 20, y: yOffset, width: scrollView.frame.width - 150, height: 40))
+    @objc @IBAction func AddFlightAction(_ sender: Any) {
+        addFlightClickCount += 1  // Increment the counter
+        
+        // If it's the third click, show the alert and return
+        if addFlightClickCount == 3 {
+            let alert = UIAlertController(title: "Error", message: "You can't add more flights.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        let fromTextField = UITextField(frame: CGRect(x: 20, y: yOffset, width: view.frame.width - 150, height: 40))
         fromTextField.placeholder = "From"
         fromTextField.borderStyle = .roundedRect
-        scrollView.addSubview(fromTextField)
+        view.addSubview(fromTextField)
 
         yOffset += 50
             
-        let toTextField = UITextField(frame: CGRect(x: 20, y: yOffset, width: scrollView.frame.width - 150, height: 40))
-        scrollView.addSubview(toTextField)
-            
-        yOffset += 50
+        let toTextField = UITextField(frame: CGRect(x: 20, y: yOffset, width: view.frame.width - 150, height: 40))
         toTextField.placeholder = "To"
         toTextField.borderStyle = .roundedRect
-        
-        let departureDatePickerWidth = scrollView.frame.width / 2
+        view.addSubview(toTextField)
+            
+        yOffset += 50
+
+        let departureDatePickerWidth = view.frame.width / 2
         let departureDatePicker = UIDatePicker(frame: CGRect(x: -80, y: yOffset, width: departureDatePickerWidth, height: 200))
         departureDatePicker.datePickerMode = .date
-        scrollView.addSubview(departureDatePicker)
+        view.addSubview(departureDatePicker)
         
-        // Return Date Picker
-        let returnDatePickerXPosition = scrollView.frame.width / 3
-        let returnDatePicker = UIDatePicker(frame: CGRect(x: returnDatePickerXPosition, y: yOffset, width: scrollView.frame.width / 2, height: 200))
+        let returnDatePickerXPosition = view.frame.width / 3
+        let returnDatePicker = UIDatePicker(frame: CGRect(x: returnDatePickerXPosition, y: yOffset, width: view.frame.width / 2, height: 200))
         returnDatePicker.datePickerMode = .date
-       
-        scrollView.addSubview(returnDatePicker)
+        view.addSubview(returnDatePicker)
         
         yOffset += 100
-        
-        // Adjust the contentSize dynamically
-        scrollView.contentSize = CGSize(width: scrollView.bounds.width, height: yOffset + 50)
     }
-    
 }

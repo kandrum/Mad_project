@@ -40,7 +40,7 @@
             </objects>
             <point key="canvasLocation" x="-260" y="465"/>
         </scene>
-        <!--Item-->
+        <!--Multi City View Controller-->
         <scene sceneID="Xdf-9z-Ky2">
             <objects>
                 <viewController id="pEP-7h-XJg" customClass="MultiCityViewController" customModule="FlightSearch" customModuleProvider="target" sceneMemberID="viewController">
@@ -62,7 +62,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="AddFlight"/>
                                 <connections>
-                                    <action selector="AddFlight:" destination="pEP-7h-XJg" eventType="touchUpInside" id="PeM-Z5-l7G"/>
+                                    <action selector="AddFlightAction:" destination="pEP-7h-XJg" eventType="touchUpInside" id="7ad-fz-j6q"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HIM-YX-J9h">
@@ -80,23 +80,49 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VE8-sM-zGY">
+                                <rect key="frame" x="302" y="138" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="SearchAction:" destination="pEP-7h-XJg" eventType="touchUpInside" id="fv1-5q-q9c"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mc9-A0-OLb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="qol-1l-N9n"/>
+                    <navigationItem key="navigationItem" id="VbB-ia-gwq"/>
                     <connections>
                         <outlet property="AddFlight" destination="Qoh-6r-CwS" id="Lus-iI-8pQ"/>
                         <outlet property="DepatureMulti" destination="OEo-YO-dAi" id="LCB-1H-4dB"/>
                         <outlet property="FromMulti" destination="HIM-YX-J9h" id="yp4-KC-Jjo"/>
                         <outlet property="ReturnMulti" destination="jMw-FL-yjN" id="CYl-LJ-J0m"/>
                         <outlet property="ToMulti" destination="GdE-I4-dBe" id="ao5-88-Xsl"/>
+                        <segue destination="Fwv-qR-bH7" kind="show" identifier="segue1" id="dXz-fI-JZR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Yv-Fk-fSO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="zib-F0-ahS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="719.84732824427476" y="464.78873239436621"/>
+            <point key="canvasLocation" x="1634" y="465"/>
+        </scene>
+        <!--Multi Display View Controller-->
+        <scene sceneID="1c5-Sd-3Gd">
+            <objects>
+                <viewController id="Fwv-qR-bH7" customClass="MultiDisplayViewController" customModule="FlightSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m2A-Mr-sff">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="EXQ-tH-f8e"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xIB-RS-HY6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B4I-5b-BK3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2447" y="465"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="aLK-zN-RTn">
@@ -111,12 +137,31 @@
                     <connections>
                         <segue destination="yoH-yf-C9b" kind="relationship" relationship="viewControllers" id="z34-Pd-LLH"/>
                         <segue destination="zRX-MF-7BL" kind="relationship" relationship="viewControllers" id="Sbc-tx-4I3"/>
-                        <segue destination="pEP-7h-XJg" kind="relationship" relationship="viewControllers" id="ABF-Eh-7AY"/>
+                        <segue destination="8cx-HF-tub" kind="relationship" relationship="viewControllers" id="ABF-Eh-7AY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IIQ-gy-g2f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-260.30534351145036" y="-274.64788732394368"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="IBl-3P-eMc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8cx-HF-tub" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="qol-1l-N9n"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lgl-1x-qmH">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pEP-7h-XJg" kind="relationship" relationship="rootViewController" id="WAV-OG-dEP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="edD-Ab-5XY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="719.84732824427476" y="464.78873239436621"/>
         </scene>
     </scenes>
     <resources>
