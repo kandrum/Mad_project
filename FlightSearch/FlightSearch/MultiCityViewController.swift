@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MultiCityViewController: UIViewController {
+class MultiCityViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var FromMulti: UITextField!
     @IBOutlet weak var AddFlight: UIButton!
@@ -24,14 +24,28 @@ class MultiCityViewController: UIViewController {
         FromMulti.placeholder = "From"
         ToMulti.placeholder = "To"
         
+        
         // Ensuring AddFlight button calls the function
         AddFlight.addTarget(self, action: #selector(AddFlightAction(_:)), for: .touchUpInside)
+        FromMulti.delegate = self
+        textFieldDidBeginEditing(FromMulti)
     }
     
     @IBAction func SearchAction(_ sender: Any) {
         performSegue(withIdentifier: "segue1", sender: self)
     }
     
+    /*@IBAction func FromMulti_Action(_ sender: UITextField) {
+        FromMulti.resignFirstResponder()
+        performSegue(withIdentifier: "segue2", sender: self)
+    }*/
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == FromMulti {
+            textField.resignFirstResponder()  // Dismiss the keyboard
+            performSegue(withIdentifier: "segue2", sender: self)
+        }
+    }
+
     private func addGradientLayer() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
