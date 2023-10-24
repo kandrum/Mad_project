@@ -6,7 +6,13 @@
 //
 
 import UIKit
+protocol AirportSelectionDelegate: AnyObject {
+    func airportSelected(_ airport: AirportViewController.Airport, forType: FlightType)
+}
 
+enum FlightType {
+    case from, to
+}
 
 
 class AirportViewController: UIViewController , UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
@@ -29,6 +35,9 @@ class AirportViewController: UIViewController , UITableViewDataSource, UITableVi
     struct AirportResponse: Codable {
         let rows: [Airport]
     }
+    weak var delegate: AirportSelectionDelegate?
+    var flightType: FlightType = .from
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         table.dataSource = self
@@ -85,7 +94,11 @@ class AirportViewController: UIViewController , UITableViewDataSource, UITableVi
             }
         }.resume()
     }
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let selectedAirport = filteredAirports[indexPath.row]
+            delegate?.airportSelected(selectedAirport, forType: flightType)
+            navigationController?.popViewController(animated: true)
+        }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         filteredAirports.count

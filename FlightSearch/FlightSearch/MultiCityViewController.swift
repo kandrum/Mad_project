@@ -7,7 +7,11 @@
 
 import UIKit
 
-class MultiCityViewController: UIViewController,UITextFieldDelegate {
+class MultiCityViewController: UIViewController,UITextFieldDelegate,AirportSelectionDelegate {
+    func airportSelected(_ airport: AirportViewController.Airport, forType: FlightType) {
+        selectedTextField?.text = airport.iata
+    }
+    var selectedTextField: UITextField?
     
     @IBOutlet weak var FromMulti: UITextField!
     @IBOutlet weak var AddFlight: UIButton!
@@ -41,12 +45,13 @@ class MultiCityViewController: UIViewController,UITextFieldDelegate {
         performSegue(withIdentifier: "segue2", sender: self)
     }*/
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        selectedTextField = textField
         if textField.placeholder == "From" || textField.placeholder == "To"{
             textField.resignFirstResponder()  // Dismiss the keyboard
             performSegue(withIdentifier: "segue2", sender: self)
         }
     }
-
+    
     private func addGradientLayer() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
@@ -60,6 +65,15 @@ class MultiCityViewController: UIViewController,UITextFieldDelegate {
         
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "segue2" {
+                if let airportVC = segue.destination as? AirportViewController {
+                    airportVC.delegate = self
+                    airportVC.flightType = selectedTextField == FromMulti ? .from : .to
+                }
+            }
+        }
+    
     
     @objc @IBAction func AddFlightAction(_ sender: Any) {
         addFlightClickCount += 1  // Increment the counter
