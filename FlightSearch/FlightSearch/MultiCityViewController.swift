@@ -41,7 +41,7 @@ class MultiCityViewController: UIViewController,UITextFieldDelegate {
         performSegue(withIdentifier: "segue2", sender: self)
     }*/
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == FromMulti || textField == ToMulti{
+        if textField.placeholder == "From" || textField.placeholder == "To"{
             textField.resignFirstResponder()  // Dismiss the keyboard
             performSegue(withIdentifier: "segue2", sender: self)
         }
@@ -75,6 +75,7 @@ class MultiCityViewController: UIViewController,UITextFieldDelegate {
         let fromTextField = UITextField(frame: CGRect(x: 20, y: yOffset, width: view.frame.width - 150, height: 40))
         fromTextField.placeholder = "From"
         fromTextField.borderStyle = .roundedRect
+        fromTextField.delegate = self
         view.addSubview(fromTextField)
 
         yOffset += 50
@@ -82,6 +83,7 @@ class MultiCityViewController: UIViewController,UITextFieldDelegate {
         let toTextField = UITextField(frame: CGRect(x: 20, y: yOffset, width: view.frame.width - 150, height: 40))
         toTextField.placeholder = "To"
         toTextField.borderStyle = .roundedRect
+        toTextField.delegate = self
         view.addSubview(toTextField)
             
         yOffset += 50
