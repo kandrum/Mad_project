@@ -7,16 +7,25 @@
 
 import UIKit
 
+
+
 class AirportViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
+    
 
     @IBOutlet weak var table: UITableView!
     var airports: [Airport] = []
+    
     struct Airport: Codable {
-        let airport_name: String
+        let name: String
+        let iata: String
+        
+        enum CodingKeys: String, CodingKey {
+                case name
+                case iata
+            }
     }
-
     struct AirportResponse: Codable {
-        let data: [Airport]
+        let rows: [Airport]
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +55,13 @@ class AirportViewController: UIViewController , UITableViewDataSource, UITableVi
             view.layer.insertSublayer(gradientLayer, at: 0)
         }
     func fetchAirports() {
-        let urlString = "http://api.aviationstack.com/v1/airports?access_key=9fe77c03e6e9b6e5c9424f7cb3050aff"
-        guard let url = URL(string: urlString) else { return }
+        let url = URL(string: "https://flight-radar1.p.rapidapi.com/airports/list")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("64aae1ed6dmsh17bdb422aee544cp1dcfaejsn7e5847da9491", forHTTPHeaderField: "X-RapidAPI-Key")
+        request.addValue("flight-radar1.p.rapidapi.com", forHTTPHeaderField: "X-RapidAPI-Host")
 
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error fetching data:", error)
                 return
@@ -57,8 +69,9 @@ class AirportViewController: UIViewController , UITableViewDataSource, UITableVi
 
             if let data = data {
                 do {
-                    let airportResponse = try JSONDecoder().decode(AirportResponse.self, from: data)
-                    self.airports = airportResponse.data
+                    // Decode the AirportResponse object
+                    let response = try JSONDecoder().decode(AirportResponse.self, from: data)
+                    self.airports = response.rows // Assign the array of airports to your airports array
                     DispatchQueue.main.async {
                         self.table.reloadData()
                     }
@@ -66,7 +79,6 @@ class AirportViewController: UIViewController , UITableViewDataSource, UITableVi
                     print("Error decoding data:", error)
                 }
             }
-            
         }.resume()
     }
 
@@ -76,8 +88,9 @@ class AirportViewController: UIViewController , UITableViewDataSource, UITableVi
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let airport = airports[indexPath.row]
-            let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AirportNameTableViewCell
-            cell.airportName.text = airport.airport_name
+        let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AirportNameTableViewCell
+        cell.airportName.text = airport.name
+        cell.iata.text = airport.iata
             return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

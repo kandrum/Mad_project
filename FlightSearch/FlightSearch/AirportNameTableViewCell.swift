@@ -10,5 +10,6 @@ import UIKit
 class AirportNameTableViewCell: UITableViewCell {
 
     @IBOutlet weak var airportName : UITextField!
+    @IBOutlet weak var iata: UITextField!
 
 }
