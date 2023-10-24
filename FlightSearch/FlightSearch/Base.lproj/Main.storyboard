@@ -45,11 +45,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="jIh-Hy-5QM">
-                                <rect key="frame" x="-19" y="197" width="223" height="72"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </datePicker>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="SFG-IN-dEb">
-                                <rect key="frame" x="156" y="184" width="221" height="99"/>
+                                <rect key="frame" x="24" y="197" width="141" height="72"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewt-np-lvW">
@@ -61,6 +57,10 @@
                                     <action selector="btnAction:" destination="zRX-MF-7BL" eventType="touchUpInside" id="uVq-Pf-bbc"/>
                                 </connections>
                             </button>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="SFG-IN-dEb">
+                                <rect key="frame" x="148" y="186" width="170" height="95"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="crX-Gm-qEx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -73,6 +73,7 @@
                         <outlet property="roundTripSearchButton" destination="ewt-np-lvW" id="Sxs-Yi-cmx"/>
                         <outlet property="roundTripTo" destination="kId-gA-NCU" id="Z6m-Dn-49y"/>
                         <segue destination="yex-dR-UCV" kind="push" identifier="roundTripToDisplay" id="wBZ-m5-S4V"/>
+                        <segue destination="Kxu-Yl-5ux" kind="show" identifier="AirportSuggestionSegue" id="hqS-72-pD6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLb-JL-umr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -205,7 +206,7 @@
                                 </prototypes>
                             </tableView>
                             <searchBar contentMode="redraw" fixedFrame="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tOD-aU-XRl">
-                                <rect key="frame" x="0.0" y="91" width="393" height="44"/>
+                                <rect key="frame" x="0.0" y="90" width="393" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -307,6 +308,9 @@
             <point key="canvasLocation" x="-260.30534351145036" y="464.78873239436621"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="hqS-72-pD6"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
