@@ -28,6 +28,7 @@ class MultiCityViewController: UIViewController,UITextFieldDelegate {
         // Ensuring AddFlight button calls the function
         AddFlight.addTarget(self, action: #selector(AddFlightAction(_:)), for: .touchUpInside)
         FromMulti.delegate = self
+        ToMulti.delegate = self
         textFieldDidBeginEditing(FromMulti)
     }
     
@@ -40,7 +41,7 @@ class MultiCityViewController: UIViewController,UITextFieldDelegate {
         performSegue(withIdentifier: "segue2", sender: self)
     }*/
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == FromMulti {
+        if textField == FromMulti || textField == ToMulti{
             textField.resignFirstResponder()  // Dismiss the keyboard
             performSegue(withIdentifier: "segue2", sender: self)
         }

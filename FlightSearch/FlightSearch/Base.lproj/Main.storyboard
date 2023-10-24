@@ -156,71 +156,65 @@
                         <outlet property="ReturnMulti" destination="jMw-FL-yjN" id="CYl-LJ-J0m"/>
                         <outlet property="ToMulti" destination="GdE-I4-dBe" id="ao5-88-Xsl"/>
                         <segue destination="Fwv-qR-bH7" kind="show" identifier="segue1" id="dXz-fI-JZR"/>
-                        <segue destination="Kuy-rd-AuZ" kind="show" identifier="segue2" id="Jgw-4j-pzd"/>
+                        <segue destination="Kxu-Yl-5ux" kind="show" identifier="segue2" id="g2x-Pr-OgB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Yv-Fk-fSO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="zib-F0-ahS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2559.5419847328244" y="464.78873239436621"/>
+            <point key="canvasLocation" x="2526" y="465"/>
         </scene>
-        <!--Airports Table View Controller-->
-        <scene sceneID="4mt-Fs-eLq">
+        <!--Airport View Controller-->
+        <scene sceneID="7zS-hg-Zf2">
             <objects>
-                <tableViewController id="Kuy-rd-AuZ" customClass="AirportsTableViewController" customModule="FlightSearch" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="p7q-hf-7hM">
+                <viewController id="Kxu-Yl-5ux" customClass="AirportViewController" customModule="FlightSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CqR-9I-6tt">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4Oo-BK-dqS">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="82" id="Thx-yj-ZlW" customClass="AirportNameTableViewCell" customModule="FlightSearch" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="82"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Thx-yj-ZlW" id="yaS-Rd-eIW">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="82"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ios-0M-sun">
+                                                    <rect key="frame" x="20" y="31" width="243" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="airportName" destination="Ios-0M-sun" id="sDu-kM-Lrn"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="45p-OL-3wm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="64" id="iIZ-Bm-rMQ">
-                                <rect key="frame" x="0.0" y="50" width="393" height="64"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iIZ-Bm-rMQ" id="LL8-7b-ONa">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="64"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Airport Names" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ah-Tq-vOq">
-                                            <rect key="frame" x="20" y="0.0" width="144" height="43"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AirportCell" rowHeight="93" id="LXy-Sh-BbW" customClass="AirportsTableViewCell" customModule="FlightSearch" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="114" width="393" height="93"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LXy-Sh-BbW" id="qY3-hQ-Mtl">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="93"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCF-3h-nHD">
-                                            <rect key="frame" x="45" y="41" width="90" height="40"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="AirportName" destination="OCF-3h-nHD" id="lCA-D1-mtM"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Kuy-rd-AuZ" id="MmJ-c5-9w8"/>
-                            <outlet property="delegate" destination="Kuy-rd-AuZ" id="beO-gq-0Lq"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="iBf-EO-ucc"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3mf-fa-ajn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="45p-OL-3wm" firstAttribute="bottom" secondItem="4Oo-BK-dqS" secondAttribute="bottom" id="6KU-dd-2wl"/>
+                            <constraint firstItem="4Oo-BK-dqS" firstAttribute="top" secondItem="45p-OL-3wm" secondAttribute="top" id="7iD-d1-Ffy"/>
+                            <constraint firstItem="45p-OL-3wm" firstAttribute="trailing" secondItem="4Oo-BK-dqS" secondAttribute="trailing" id="9yW-Aa-PD6"/>
+                            <constraint firstItem="4Oo-BK-dqS" firstAttribute="leading" secondItem="45p-OL-3wm" secondAttribute="leading" id="I6F-M8-qMI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hQT-cc-5dK"/>
+                    <connections>
+                        <outlet property="table" destination="4Oo-BK-dqS" id="blu-ir-u80"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mfu-4s-oua" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2241.9847328244273" y="1198.5915492957747"/>
+            <point key="canvasLocation" x="2525.9541984732823" y="1259.8591549295775"/>
         </scene>
         <!--Multi Display View Controller-->
         <scene sceneID="1c5-Sd-3Gd">
