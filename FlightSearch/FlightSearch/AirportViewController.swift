@@ -9,11 +9,13 @@ import UIKit
 
 
 
-class AirportViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
+class AirportViewController: UIViewController , UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
 
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var SearchBar: UISearchBar!
     var airports: [Airport] = []
+    var filteredAirports: [Airport] = []
     
     struct Airport: Codable {
         let name: String
@@ -31,8 +33,10 @@ class AirportViewController: UIViewController , UITableViewDataSource, UITableVi
         super.viewDidLoad()
         table.dataSource = self
         table.delegate = self
+        SearchBar.delegate = self
         fetchAirports()
         addGradientLayer()
+        filteredAirports = airports
 
         // Do any additional setup after loading the view.
     }
@@ -84,19 +88,39 @@ class AirportViewController: UIViewController , UITableViewDataSource, UITableVi
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return airports.count
+        filteredAirports.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let airport = airports[indexPath.row]
         let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AirportNameTableViewCell
+        let  airport = filteredAirports[indexPath.row]
         cell.airportName.text = airport.name
         cell.iata.text = airport.iata
-            return cell
+            
+        return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+           filteredAirports = airports.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+           table.reloadData()
+    }
+    func SearchBar(_ searchBar: UISearchBar, textDidChange searchText : String){
+        if searchText.isEmpty {
+                    filteredAirports = airports
+                } else {
+                    filteredAirports = airports.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+                }
+                table.reloadData()
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+                searchBar.text = ""
+                filteredAirports = airports
+                searchBar.resignFirstResponder()
+                table.reloadData()
+    }
+      
+       
     /*
     // MARK: - Navigation
 
@@ -106,5 +130,4 @@ class AirportViewController: UIViewController , UITableViewDataSource, UITableVi
         // Pass the selected object to the new view controller.
     }
     */
-
 }
