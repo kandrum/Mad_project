@@ -37,12 +37,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="searchFrom:" destination="yoH-yf-C9b" eventType="editingDidBegin" id="2pS-gw-gZv"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3fV-R9-sVv">
                                 <rect key="frame" x="36" y="173" width="279" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="searchTo:" destination="yoH-yf-C9b" eventType="editingDidBegin" id="8p6-iE-gR2"/>
+                                </connections>
                             </textField>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="Is9-pf-Wip">
                                 <rect key="frame" x="36" y="215" width="153" height="74"/>
@@ -67,6 +73,7 @@
                         <outlet property="oneWayFrom" destination="MsJ-TG-nqQ" id="I3p-yu-jDE"/>
                         <outlet property="oneWayTo" destination="3fV-R9-sVv" id="aOC-d1-rZ5"/>
                         <segue destination="fQZ-Lf-IrD" kind="show" identifier="oneWayToDisplay" id="oj6-dN-rgm"/>
+                        <segue destination="Kxu-Yl-5ux" kind="show" identifier="oneWayAiportSegue" id="ETE-YA-I73"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8K-LC-JrT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -383,7 +390,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hqS-72-pD6"/>
+        <segue reference="ETE-YA-I73"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">

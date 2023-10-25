@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class OneWayViewController: UIViewController {
+class OneWayViewController: UIViewController, UITextFieldDelegate {
 
     
     @IBOutlet weak var oneWayFrom: UITextField!
@@ -18,15 +18,35 @@ class OneWayViewController: UIViewController {
         super.viewDidLoad()
         oneWayFrom.placeholder="From"
         oneWayTo.placeholder="To"
+        oneWayFrom.delegate=self
+        oneWayTo.delegate=self
         // Add gradient layer
         addGradientLayer()
     }
-    
-    
+    override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            oneWayFrom.resignFirstResponder()
+            oneWayTo.resignFirstResponder()
+        }
     @IBAction func searchBtn(_ sender: Any) {
        performSegue(withIdentifier: "oneWayToDisplay", sender: self)
     }
     
+    
+    
+    @IBAction func searchFrom(_ sender: UITextField) {
+        if(sender == oneWayFrom){
+                    performSegue(withIdentifier: "oneWayAiportSegue", sender: oneWayFrom)
+                }    }
+    
+    
+    
+    
+    @IBAction func searchTo(_ sender: UITextField) {
+        if(sender == oneWayTo){
+                    performSegue(withIdentifier: "oneWayAiportSegue", sender: oneWayTo)
+                }
+    }
     private func addGradientLayer() {
             let gradientLayer = CAGradientLayer()
             gradientLayer.frame = view.bounds
