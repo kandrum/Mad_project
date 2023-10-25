@@ -16,7 +16,6 @@ class MultiCityViewController: UIViewController,UITextFieldDelegate,AirportSelec
     @IBOutlet weak var FromMulti: UITextField!
     @IBOutlet weak var AddFlight: UIButton!
     @IBOutlet weak var ToMulti: UITextField!
-    @IBOutlet weak var ReturnMulti: UIDatePicker!
     @IBOutlet weak var DepatureMulti: UIDatePicker!
     var yOffset: CGFloat = 300 // Starting point for dynamic elements, adjust accordingly
     var addFlightClickCount = 0
@@ -106,12 +105,6 @@ class MultiCityViewController: UIViewController,UITextFieldDelegate,AirportSelec
         let departureDatePicker = UIDatePicker(frame: CGRect(x: -80, y: yOffset, width: departureDatePickerWidth, height: 200))
         departureDatePicker.datePickerMode = .date
         view.addSubview(departureDatePicker)
-        
-        let returnDatePickerXPosition = view.frame.width / 3
-        let returnDatePicker = UIDatePicker(frame: CGRect(x: returnDatePickerXPosition, y: yOffset, width: view.frame.width / 2, height: 200))
-        returnDatePicker.datePickerMode = .date
-        view.addSubview(returnDatePicker)
-        
         yOffset += 100
     }
 }

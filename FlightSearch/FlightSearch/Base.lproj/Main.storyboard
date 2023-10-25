@@ -114,10 +114,6 @@
                                 <rect key="frame" x="16" y="178" width="140" height="104"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="jMw-FL-yjN">
-                                <rect key="frame" x="210" y="181" width="141" height="98"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qoh-6r-CwS">
                                 <rect key="frame" x="254" y="245" width="97" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -143,10 +139,10 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VE8-sM-zGY">
-                                <rect key="frame" x="302" y="138" width="75" height="35"/>
+                                <rect key="frame" x="302" y="138" width="76" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="search"/>
                                 <connections>
                                     <action selector="SearchAction:" destination="pEP-7h-XJg" eventType="touchUpInside" id="XKf-qt-CVr"/>
                                 </connections>
@@ -160,7 +156,6 @@
                         <outlet property="AddFlight" destination="Qoh-6r-CwS" id="Lus-iI-8pQ"/>
                         <outlet property="DepatureMulti" destination="OEo-YO-dAi" id="LCB-1H-4dB"/>
                         <outlet property="FromMulti" destination="HIM-YX-J9h" id="yp4-KC-Jjo"/>
-                        <outlet property="ReturnMulti" destination="jMw-FL-yjN" id="CYl-LJ-J0m"/>
                         <outlet property="ToMulti" destination="GdE-I4-dBe" id="ao5-88-Xsl"/>
                         <segue destination="Fwv-qR-bH7" kind="show" identifier="segue1" id="dXz-fI-JZR"/>
                         <segue destination="Kxu-Yl-5ux" kind="show" identifier="segue2" id="g2x-Pr-OgB"/>
@@ -190,23 +185,25 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="82"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ios-0M-sun">
-                                                    <rect key="frame" x="20" y="31" width="243" height="34"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4c6-dt-QzA">
+                                                    <rect key="frame" x="40" y="25" width="204" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ts7-70-YAR">
-                                                    <rect key="frame" x="276" y="31" width="97" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WtQ-EX-k2y">
+                                                    <rect key="frame" x="296" y="28" width="62" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="airportName" destination="Ios-0M-sun" id="sDu-kM-Lrn"/>
-                                            <outlet property="iata" destination="ts7-70-YAR" id="s2i-HZ-qdW"/>
+                                            <outlet property="airportName" destination="4c6-dt-QzA" id="uDt-wO-wNi"/>
+                                            <outlet property="iata" destination="WtQ-EX-k2y" id="tdP-e9-CvQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -237,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mfu-4s-oua" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2525.9541984732823" y="1259.8591549295775"/>
+            <point key="canvasLocation" x="2484.7328244274809" y="1274.6478873239437"/>
         </scene>
         <!--Multi Display View Controller-->
         <scene sceneID="1c5-Sd-3Gd">
@@ -315,7 +312,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hqS-72-pD6"/>
+        <segue reference="g2x-Pr-OgB"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
