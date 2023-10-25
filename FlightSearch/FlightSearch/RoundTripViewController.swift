@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RoundTripViewController: UIViewController, UITextFieldDelegate {
+class RoundTripViewController: UIViewController, UITextFieldDelegate,AirportSelectionDelegate {
 
     
     @IBOutlet weak var roundTripFrom: UITextField!
@@ -19,22 +19,35 @@ class RoundTripViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var roundTripReturnDate: UIDatePicker!
     
-    
+    var selectedAirport:UITextField?
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         roundTripTo.resignFirstResponder()
         roundTripFrom.resignFirstResponder()
     }
 
+    func airportSelected(_ airport: AirportViewController.Airport, forType: FlightType) {
+        selectedAirport?.text = airport.name
+
+    }
     
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         if segue.identifier == "AirportSuggestionSegue" {
+            if let airportVC = segue.destination as? AirportViewController {
+                airportVC.delegate = self
+                airportVC.flightType = selectedAirport == roundTripFrom ? .from : .to
+            }
+        }    }
     
     @IBAction func typeFromAirport(_ sender: UITextField) {
+        selectedAirport = sender
         if(sender == roundTripFrom){
             performSegue(withIdentifier: "AirportSuggestionSegue", sender: roundTripFrom)
         }
     }
     
     @IBAction func typeToAirport(_ sender: UITextField) {
+        selectedAirport = sender
         if(sender == roundTripTo){
             performSegue(withIdentifier: "AirportSuggestionSegue", sender: roundTripFrom)
         }
