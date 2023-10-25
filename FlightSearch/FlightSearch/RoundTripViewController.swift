@@ -58,9 +58,18 @@ class RoundTripViewController: UIViewController, UITextFieldDelegate,AirportSele
         roundTripTo.placeholder = "To"
         roundTripFrom.delegate=self
         roundTripTo.delegate=self
+        roundTripDepartureDate.minimumDate = Date()
+        roundTripReturnDate.minimumDate = Date()
+        roundTripDepartureDate.addTarget(self, action: #selector(departureDateChanged), for: .valueChanged)
         addGradientLayer()
             // Do any additional setup after loading the view.
     }
+    
+    @objc func departureDateChanged() {
+        let selectedDepartureDate = roundTripDepartureDate.date
+        roundTripReturnDate.minimumDate = selectedDepartureDate
+    }
+
     
  func addGradientLayer() {
         let gradientLayer = CAGradientLayer()
