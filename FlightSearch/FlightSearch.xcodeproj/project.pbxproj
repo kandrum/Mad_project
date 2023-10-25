@@ -23,6 +23,7 @@
 		5C9258D82ADE170500E067D9 /* FlightSearchUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9258D72ADE170500E067D9 /* FlightSearchUITestsLaunchTests.swift */; };
 		5CBA28DC2AE74C96007332BF /* AirportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA28DB2AE74C96007332BF /* AirportViewController.swift */; };
 		5CBA28DE2AE7500E007332BF /* AirportNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA28DD2AE7500E007332BF /* AirportNameTableViewCell.swift */; };
+		7FFC1A402AE9BDAE0089F063 /* OneWayDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1A3F2AE9BDAE0089F063 /* OneWayDisplayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		5C9258D72ADE170500E067D9 /* FlightSearchUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightSearchUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5CBA28DB2AE74C96007332BF /* AirportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportViewController.swift; sourceTree = "<group>"; };
 		5CBA28DD2AE7500E007332BF /* AirportNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportNameTableViewCell.swift; sourceTree = "<group>"; };
+		7FFC1A3F2AE9BDAE0089F063 /* OneWayDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneWayDisplayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				156558E02AE331B40004A41A /* RoundTripDisplayViewController.swift */,
 				5CBA28DB2AE74C96007332BF /* AirportViewController.swift */,
 				5CBA28DD2AE7500E007332BF /* AirportNameTableViewCell.swift */,
+				7FFC1A3F2AE9BDAE0089F063 /* OneWayDisplayViewController.swift */,
 			);
 			path = FlightSearch;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				5C9258B52ADE170200E067D9 /* AppDelegate.swift in Sources */,
 				5CBA28DE2AE7500E007332BF /* AirportNameTableViewCell.swift in Sources */,
 				156558E12AE331B40004A41A /* RoundTripDisplayViewController.swift in Sources */,
+				7FFC1A402AE9BDAE0089F063 /* OneWayDisplayViewController.swift in Sources */,
 				5C6026212ADF6C8A0015577F /* RoundTripViewController.swift in Sources */,
 				5C9258B72ADE170200E067D9 /* SceneDelegate.swift in Sources */,
 				5C77109F2AE20CE90042A127 /* MultiDisplayViewController.swift in Sources */,

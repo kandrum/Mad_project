@@ -21,7 +21,12 @@ class OneWayViewController: UIViewController {
         // Add gradient layer
         addGradientLayer()
     }
-
+    
+    
+    @IBAction func searchBtn(_ sender: Any) {
+       performSegue(withIdentifier: "oneWayToDisplay", sender: self)
+    }
+    
     private func addGradientLayer() {
             let gradientLayer = CAGradientLayer()
             gradientLayer.frame = view.bounds

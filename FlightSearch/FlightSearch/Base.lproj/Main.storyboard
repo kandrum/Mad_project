@@ -8,20 +8,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--One Way Display View Controller-->
         <scene sceneID="QaK-x3-wD1">
             <objects>
-                <viewController id="fQZ-Lf-IrD" sceneMemberID="viewController">
+                <viewController id="fQZ-Lf-IrD" customClass="OneWayDisplayViewController" customModule="FlightSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tfo-Jp-BkG">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="SFD-Ar-7Gn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="6Df-K6-bjH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AZk-Um-s1s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-260" y="1246"/>
+            <point key="canvasLocation" x="-282" y="1260"/>
         </scene>
         <!--One Way View Controller-->
         <scene sceneID="yVe-v6-pTC">
@@ -52,6 +53,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Search"/>
+                                <connections>
+                                    <action selector="searchBtn:" destination="yoH-yf-C9b" eventType="touchUpInside" id="Uzs-p8-to5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tAk-Ug-fS9"/>
@@ -62,6 +66,7 @@
                         <outlet property="oneWayDepartureDate" destination="Is9-pf-Wip" id="YHB-CI-ja2"/>
                         <outlet property="oneWayFrom" destination="MsJ-TG-nqQ" id="I3p-yu-jDE"/>
                         <outlet property="oneWayTo" destination="3fV-R9-sVv" id="aOC-d1-rZ5"/>
+                        <segue destination="fQZ-Lf-IrD" kind="show" identifier="oneWayToDisplay" id="oj6-dN-rgm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8K-LC-JrT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -122,7 +127,7 @@
                         <outlet property="roundTripReturnDate" destination="SFG-IN-dEb" id="brW-s2-gsJ"/>
                         <outlet property="roundTripSearchButton" destination="ewt-np-lvW" id="Sxs-Yi-cmx"/>
                         <outlet property="roundTripTo" destination="kId-gA-NCU" id="Z6m-Dn-49y"/>
-                        <segue destination="yex-dR-UCV" kind="push" identifier="roundTripToDisplay" id="wBZ-m5-S4V"/>
+                        <segue destination="yex-dR-UCV" kind="show" identifier="roundTripToDisplay" id="wBZ-m5-S4V"/>
                         <segue destination="Kxu-Yl-5ux" kind="show" identifier="AirportSuggestionSegue" id="hqS-72-pD6"/>
                     </connections>
                 </viewController>
