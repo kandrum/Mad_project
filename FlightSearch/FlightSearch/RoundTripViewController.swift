@@ -1,3 +1,4 @@
+
 //
 //  RoundTripViewController.swift
 //  FlightSearch
@@ -17,6 +18,27 @@ class RoundTripViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var roundTripSearchButton: UIButton!
     
     @IBOutlet weak var roundTripReturnDate: UIDatePicker!
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        roundTripTo.resignFirstResponder()
+        roundTripFrom.resignFirstResponder()
+    }
+
+    
+    
+    @IBAction func typeFromAirport(_ sender: UITextField) {
+        if(sender == roundTripFrom){
+            performSegue(withIdentifier: "AirportSuggestionSegue", sender: roundTripFrom)
+        }
+    }
+    
+    @IBAction func typeToAirport(_ sender: UITextField) {
+        if(sender == roundTripTo){
+            performSegue(withIdentifier: "AirportSuggestionSegue", sender: roundTripFrom)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         roundTripFrom.placeholder = "From"
@@ -26,12 +48,8 @@ class RoundTripViewController: UIViewController, UITextFieldDelegate {
         addGradientLayer()
             // Do any additional setup after loading the view.
     }
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == roundTripFrom || textField == roundTripTo {
-            performSegue(withIdentifier: "AirportSuggestionSegue", sender: self)
-        }
-    }
-    private func addGradientLayer() {
+    
+ func addGradientLayer() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
         
