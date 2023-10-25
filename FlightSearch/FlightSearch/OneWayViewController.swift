@@ -8,9 +8,16 @@ import UIKit
 
 class OneWayViewController: UIViewController {
 
+    
+    @IBOutlet weak var oneWayFrom: UITextField!
+    @IBOutlet weak var oneWayTo: UITextField!
+    
+    @IBOutlet weak var oneWayDepartureDate: UIDatePicker!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        oneWayFrom.placeholder="From"
+        oneWayTo.placeholder="To"
         // Add gradient layer
         addGradientLayer()
     }
