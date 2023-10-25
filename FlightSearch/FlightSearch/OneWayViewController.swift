@@ -20,6 +20,7 @@ class OneWayViewController: UIViewController, UITextFieldDelegate,AirportSelecti
         super.viewDidLoad()
         oneWayFrom.placeholder="From"
         oneWayTo.placeholder="To"
+        oneWayDepartureDate.minimumDate=Date()
         oneWayFrom.delegate=self
         oneWayTo.delegate=self
         // Add gradient layer
