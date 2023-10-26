@@ -33,6 +33,8 @@ class MultiCityViewController: UIViewController,UITextFieldDelegate,AirportSelec
         FromMulti.delegate = self
         ToMulti.delegate = self
         textFieldDidBeginEditing(FromMulti)
+        DepatureMulti.minimumDate=Date()
+        
     }
     
     @IBAction func SearchAction(_ sender: Any) {
