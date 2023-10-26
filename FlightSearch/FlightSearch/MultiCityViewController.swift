@@ -17,6 +17,7 @@ class MultiCityViewController: UIViewController,UITextFieldDelegate,AirportSelec
     @IBOutlet weak var AddFlight: UIButton!
     @IBOutlet weak var ToMulti: UITextField!
     @IBOutlet weak var DepatureMulti: UIDatePicker!
+    @IBOutlet weak var ReturnMulti: UIDatePicker!
     var yOffset: CGFloat = 300 // Starting point for dynamic elements, adjust accordingly
     var addFlightClickCount = 0
 
@@ -34,10 +35,9 @@ class MultiCityViewController: UIViewController,UITextFieldDelegate,AirportSelec
         ToMulti.delegate = self
         textFieldDidBeginEditing(FromMulti)
         DepatureMulti.minimumDate=Date()
-<<<<<<< Updated upstream
-=======
+
         ReturnMulti.minimumDate=Date()
->>>>>>> Stashed changes
+
         
     }
     
@@ -112,9 +112,6 @@ class MultiCityViewController: UIViewController,UITextFieldDelegate,AirportSelec
         departureDatePicker.datePickerMode = .date
         departureDatePicker.minimumDate=Date()
         view.addSubview(departureDatePicker)
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
         
         let returnDatePickerXPosition = view.frame.width / 3
         let returnDatePicker = UIDatePicker(frame: CGRect(x: returnDatePickerXPosition, y: yOffset, width: view.frame.width / 2, height: 200))
@@ -122,9 +119,6 @@ class MultiCityViewController: UIViewController,UITextFieldDelegate,AirportSelec
         returnDatePicker.minimumDate=Date()
         view.addSubview(returnDatePicker)
         
-=======
->>>>>>> c2566e084de7b39543668102773c4c28e8ab5fd4
->>>>>>> Stashed changes
         yOffset += 100
     }
 }

@@ -203,6 +203,10 @@
                                     <action selector="SearchAction:" destination="pEP-7h-XJg" eventType="touchUpInside" id="XKf-qt-CVr"/>
                                 </connections>
                             </button>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="0cB-yr-aKl">
+                                <rect key="frame" x="175" y="213" width="140" height="34"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mc9-A0-OLb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -212,6 +216,7 @@
                         <outlet property="AddFlight" destination="Qoh-6r-CwS" id="Lus-iI-8pQ"/>
                         <outlet property="DepatureMulti" destination="OEo-YO-dAi" id="LCB-1H-4dB"/>
                         <outlet property="FromMulti" destination="HIM-YX-J9h" id="yp4-KC-Jjo"/>
+                        <outlet property="ReturnMulti" destination="0cB-yr-aKl" id="zar-VQ-h80"/>
                         <outlet property="ToMulti" destination="GdE-I4-dBe" id="ao5-88-Xsl"/>
                         <segue destination="Fwv-qR-bH7" kind="show" identifier="segue1" id="dXz-fI-JZR"/>
                         <segue destination="Kxu-Yl-5ux" kind="show" identifier="segue2" id="g2x-Pr-OgB"/>
