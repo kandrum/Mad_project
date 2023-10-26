@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -337,7 +338,10 @@
         <scene sceneID="IBl-3P-eMc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8cx-HF-tub" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="MultiCity" id="qol-1l-N9n"/>
+                    <tabBarItem key="tabBarItem" title="MultiCity" id="qol-1l-N9n">
+                        <imageReference key="image" image="forward.fill" catalog="system" symbolScale="small"/>
+                        <imageReference key="selectedImage" image="forward.fill" catalog="system" symbolScale="small"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lgl-1x-qmH">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -356,7 +360,10 @@
         <scene sceneID="XfN-U3-qu6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ULN-fK-OJn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="RoundTrip" id="7XC-qx-PGg"/>
+                    <tabBarItem key="tabBarItem" title="RoundTrip" id="7XC-qx-PGg">
+                        <imageReference key="image" image="repeat" catalog="system" symbolScale="small"/>
+                        <imageReference key="selectedImage" image="repeat" catalog="system" symbolScale="small"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ljp-aC-NV2">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -375,7 +382,10 @@
         <scene sceneID="xBx-s8-Sgn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="toZ-zs-JOY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="OneWay" id="ncT-EM-Dd7"/>
+                    <tabBarItem key="tabBarItem" title="OneWay" id="ncT-EM-Dd7">
+                        <imageReference key="image" image="arrowshape.right.fill" catalog="system" symbolScale="small"/>
+                        <imageReference key="selectedImage" image="arrowshape.right.fill" catalog="system" symbolScale="small"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gt7-vI-e0A">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -395,6 +405,9 @@
         <segue reference="g2x-Pr-OgB"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="arrowshape.right.fill" catalog="system" width="128" height="104"/>
+        <image name="forward.fill" catalog="system" width="128" height="77"/>
+        <image name="repeat" catalog="system" width="128" height="98"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
