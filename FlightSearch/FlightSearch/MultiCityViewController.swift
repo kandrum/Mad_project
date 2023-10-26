@@ -9,7 +9,7 @@ import UIKit
 
 class MultiCityViewController: UIViewController,UITextFieldDelegate,AirportSelectionDelegate {
     func airportSelected(_ airport: AirportViewController.Airport, forType: FlightType) {
-        selectedTextField?.text = airport.iata
+        selectedTextField?.text = airport.name
     }
     var selectedTextField: UITextField?
     
