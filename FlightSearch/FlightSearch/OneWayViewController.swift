@@ -34,7 +34,17 @@ class OneWayViewController: UIViewController, UITextFieldDelegate,AirportSelecti
         }
     
     @IBAction func searchBtn(_ sender: Any) {
-       performSegue(withIdentifier: "oneWayToDisplay", sender: self)
+        let fromTextOneWay = oneWayFrom.text
+        let toTextOneWay = oneWayTo.text
+    if fromTextOneWay != nil && toTextOneWay != nil && fromTextOneWay == toTextOneWay
+        {
+            let alert = UIAlertController(title: "Error", message: "You can't travel  betweem same Origin and Destination points.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else{
+            performSegue(withIdentifier: "oneWayToDisplay", sender: self)
+        }
     }
     
     @IBAction func searchFrom(_ sender: UITextField) {
