@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class OneWayViewController: UIViewController {
+class OneWayViewController: UIViewController, UITextFieldDelegate,AirportSelectionDelegate {
 
     
     @IBOutlet weak var oneWayFrom: UITextField!
@@ -14,13 +14,56 @@ class OneWayViewController: UIViewController {
     
     @IBOutlet weak var oneWayDepartureDate: UIDatePicker!
     
+    var selectedAirport:UITextField?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         oneWayFrom.placeholder="From"
         oneWayTo.placeholder="To"
+        oneWayDepartureDate.minimumDate=Date()
+        oneWayFrom.delegate=self
+        oneWayTo.delegate=self
         // Add gradient layer
         addGradientLayer()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            oneWayFrom.resignFirstResponder()
+            oneWayTo.resignFirstResponder()
+        }
+    
+    @IBAction func searchBtn(_ sender: Any) {
+       performSegue(withIdentifier: "oneWayToDisplay", sender: self)
+    }
+    
+    @IBAction func searchFrom(_ sender: UITextField) {
+        selectedAirport=sender
+        if(sender == oneWayFrom){
+                    performSegue(withIdentifier: "oneWayAiportSegue", sender: oneWayFrom)
+                }    }
+    
+
+    
+    @IBAction func searchTo(_ sender: UITextField) {
+        selectedAirport=sender
+        if(sender == oneWayTo){
+                    performSegue(withIdentifier: "oneWayAiportSegue", sender: oneWayTo)
+                }
+    }
+    
+    func airportSelected(_ airport: AirportViewController.Airport, forType: FlightType) {
+            selectedAirport?.text = airport.name
+
+        }
+
+         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+             if segue.identifier == "oneWayAiportSegue" {
+                if let airportVC = segue.destination as? AirportViewController {
+                    airportVC.delegate = self
+                    airportVC.flightType = selectedAirport == oneWayFrom ? .from : .to
+                }
+            }    }
 
     private func addGradientLayer() {
             let gradientLayer = CAGradientLayer()
