@@ -35,20 +35,31 @@ class MultiCityViewController: UIViewController,UITextFieldDelegate,AirportSelec
         ToMulti.delegate = self
         textFieldDidBeginEditing(FromMulti)
         DepatureMulti.minimumDate=Date()
-
         ReturnMulti.minimumDate=Date()
-
-        
-    }
+        }
     
     @IBAction func SearchAction(_ sender: Any) {
-        performSegue(withIdentifier: "segue1", sender: self)
+        let fromTextMulti = FromMulti.text
+        let toTextMulti = ToMulti.text
+    if fromTextMulti != nil && toTextMulti != nil && fromTextMulti == toTextMulti
+        {
+            let alert = UIAlertController(title: "Error", message: "You can't travel  betweem same Origin and Destination points.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        else{
+            
+            performSegue(withIdentifier: "segue1", sender: self)
+        }
     }
     
     /*@IBAction func FromMulti_Action(_ sender: UITextField) {
         FromMulti.resignFirstResponder()
         performSegue(withIdentifier: "segue2", sender: self)
     }*/
+    
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         selectedTextField = textField
         if textField.placeholder == "From" || textField.placeholder == "To"{
@@ -57,7 +68,8 @@ class MultiCityViewController: UIViewController,UITextFieldDelegate,AirportSelec
         }
     }
     
-    private func addGradientLayer() {
+    
+  private func addGradientLayer() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
         
