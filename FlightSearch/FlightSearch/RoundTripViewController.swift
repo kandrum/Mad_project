@@ -90,7 +90,18 @@ class RoundTripViewController: UIViewController, UITextFieldDelegate,AirportSele
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
     @IBAction func btnAction(_ sender: Any) {
-        performSegue(withIdentifier: "roundTripToDisplay", sender: self)
+        let fromTextRoundTrip = roundTripFrom.text
+        let toTextRoundTrip = roundTripTo.text
+        
+       if fromTextRoundTrip != nil && toTextRoundTrip != nil && fromTextRoundTrip == toTextRoundTrip
+        {
+            let alert = UIAlertController(title: "Error", message: "You can't travel  betweem same Origin and Destination points.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else{
+            performSegue(withIdentifier: "roundTripToDisplay", sender: self)
+        }
     }
     /* func fetchAirports() {
      let url = URL(string: "https://flight-radar1.p.rapidapi.com/airports/list")!
