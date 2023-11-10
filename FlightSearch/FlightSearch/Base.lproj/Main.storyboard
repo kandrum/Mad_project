@@ -38,25 +38,19 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="searchFrom:" destination="yoH-yf-C9b" eventType="editingDidBegin" id="2pS-gw-gZv"/>
-                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3fV-R9-sVv">
                                 <rect key="frame" x="36" y="173" width="279" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="searchTo:" destination="yoH-yf-C9b" eventType="editingDidBegin" id="8p6-iE-gR2"/>
-                                </connections>
                             </textField>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="Is9-pf-Wip">
-                                <rect key="frame" x="36" y="215" width="153" height="74"/>
+                                <rect key="frame" x="16" y="281" width="153" height="74"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8RB-9L-Wlg">
-                                <rect key="frame" x="197" y="235" width="97" height="35"/>
+                                <rect key="frame" x="207" y="301" width="97" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Search"/>
@@ -64,12 +58,19 @@
                                     <action selector="searchBtn:" destination="yoH-yf-C9b" eventType="touchUpInside" id="Uzs-p8-to5"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yvl-0y-zc2">
+                                <rect key="frame" x="36" y="239" width="157" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tAk-Ug-fS9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="Wic-EL-guL"/>
                     <connections>
+                        <outlet property="cabin" destination="Yvl-0y-zc2" id="9Qg-wL-Dsj"/>
                         <outlet property="oneWayDepartureDate" destination="Is9-pf-Wip" id="YHB-CI-ja2"/>
                         <outlet property="oneWayFrom" destination="MsJ-TG-nqQ" id="I3p-yu-jDE"/>
                         <outlet property="oneWayTo" destination="3fV-R9-sVv" id="aOC-d1-rZ5"/>
@@ -402,7 +403,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="g2x-Pr-OgB"/>
+        <segue reference="ETE-YA-I73"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.right.fill" catalog="system" width="128" height="104"/>
