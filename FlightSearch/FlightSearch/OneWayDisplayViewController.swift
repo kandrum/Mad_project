@@ -8,11 +8,19 @@
 import UIKit
 
 class OneWayDisplayViewController: UIViewController {
-
+    var cabinClass: String?
+    var fromLocation: String?
+    var toLocation: String?
+    var departureDate: Date?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientLayer()
         // Do any additional setup after loading the view.
+        print("Cabin Class: \(cabinClass ?? "N/A")")
+        print("From: \(fromLocation ?? "N/A")")
+        print("To: \(toLocation ?? "N/A")")
+        print("Departure Date: \(departureDate?.description ?? "N/A")")
     }
     
     

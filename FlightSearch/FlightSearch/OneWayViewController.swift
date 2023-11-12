@@ -101,6 +101,14 @@ class OneWayViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
                 airportVC.flightType = selectedAirport == oneWayFrom ? .from : .to
             }
         }
+        else if segue.identifier == "oneWayToDisplay" {
+               if let displayVC = segue.destination as? OneWayDisplayViewController {
+                   displayVC.cabinClass = cabin.text
+                   displayVC.fromLocation = oneWayFrom.text
+                   displayVC.toLocation = oneWayTo.text
+                   displayVC.departureDate = oneWayDepartureDate.date
+               }
+           }
     }
     
     private func addGradientLayer() {
