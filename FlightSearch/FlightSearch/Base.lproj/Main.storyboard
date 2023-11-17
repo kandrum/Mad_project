@@ -59,10 +59,10 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="airways" destination="reH-8a-F0Y" id="rZT-6z-XF2"/>
-                                            <outlet property="currency" destination="4vC-uW-Jv4" id="8mD-jX-Q9C"/>
-                                            <outlet property="stops" destination="VxH-IO-7Ie" id="3Cz-3U-Mgx"/>
-                                            <outlet property="totalDuration" destination="Bbk-aq-iII" id="XFr-bi-XXK"/>
+                                            <outlet property="airlinesName" destination="reH-8a-F0Y" id="cLo-pS-S26"/>
+                                            <outlet property="currency" destination="4vC-uW-Jv4" id="5RO-uo-pyF"/>
+                                            <outlet property="stops" destination="VxH-IO-7Ie" id="10o-Ev-fXO"/>
+                                            <outlet property="totalDuration" destination="Bbk-aq-iII" id="cap-xY-hwy"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
