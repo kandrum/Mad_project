@@ -83,7 +83,8 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
             let amount: Double
             let amountUsd: Double
             let totalAmount: Double
-            let totalAmountUsd: Double            // Add other fields as needed
+            let totalAmountUsd: Double           
+            // Add other fields as needed
         }
 
         struct Price: Codable {
@@ -110,11 +111,30 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchDataFromAPI()
+        addGradientLayer()
         onewaydisplaytable.delegate = self
         onewaydisplaytable.dataSource = self
         // Do any additional setup after loading the view.
     }
-
+    private func addGradientLayer() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        
+        // Define your custom sky blue color
+        let skyBlueColor = UIColor(red: 135/255, green: 206/255, blue: 235/255, alpha: 1.0)
+        
+        gradientLayer.colors = [UIColor.white.cgColor, skyBlueColor.cgColor]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        
+        // Remove any existing gradient layers
+        view.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
+        
+        // Add the gradient layer to the view's layer
+        view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
     private func fetchDataFromAPI() {
             guard let requestURL = createRequestURL() else {
                 print("Failed to create API request URL.")
@@ -141,13 +161,6 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                 // Parse the JSON data
                 if let flightInfoArray = self?.parseFlightInfo(data: data) {
                     self?.displayFlightInfoArray = flightInfoArray
-                    flightInfoArray.forEach { flightInfo in
-                                    print("Airline Name: \(flightInfo.airlineName)")
-                                    print("Stopovers Count: \(flightInfo.stopoversCount)")
-                                    print("Total Duration: \(flightInfo.totalDuration)")
-                                    print("Total Amount USD: \(flightInfo.totalAmountUsd)")
-                                    print("-------------------")
-                                }
                     DispatchQueue.main.async {
                         self?.onewaydisplaytable.reloadData()
                     }
@@ -205,7 +218,7 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
         let displayFlightInfo = displayFlightInfoArray[indexPath.row]
         cell.currency.text = String(format: "$%.2f", displayFlightInfo.totalAmountUsd)
         cell.stops.text = "\(displayFlightInfo.stopoversCount) Stopovers"
-        cell.totalDuration.text = "Total Duration: \(displayFlightInfo.totalDuration)"
+        cell.totalDuration.text = "\(displayFlightInfo.totalDuration)"
         cell.airlinesName.text = displayFlightInfo.airlineName
 
         return cell
@@ -254,6 +267,7 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
             print("Error parsing JSON: \(error)")
             return nil
         }
+        
     }
 
     /*
