@@ -159,19 +159,14 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                 }
                 
                 // Parse the JSON data
-                if let flightInfoArray = self?.parseFlightInfo(data: data) {
-                    self?.displayFlightInfoArray = flightInfoArray
-                    DispatchQueue.main.async {
-                        self?.onewaydisplaytable.reloadData()
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        // Handle the parsing error, e.g., show an error message to the user
-                        self?.handleParsingError()
-                    }
-                }
-            }.resume()
-        }
+                guard let flightInfoArray = self?.parseFlightInfo(data: data) else { return }
+
+                            DispatchQueue.main.async {
+                                self?.displayFlightInfoArray = flightInfoArray
+                                self?.onewaydisplaytable.reloadData()
+                            }
+                        }.resume()
+       }
 
         // Helper methods to handle different errors
         private func handleError(_ error: Error) {
@@ -217,7 +212,7 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
 
         let displayFlightInfo = displayFlightInfoArray[indexPath.row]
         cell.currency.text = String(format: "$%.2f", displayFlightInfo.totalAmountUsd)
-        cell.stops.text = "\(displayFlightInfo.stopoversCount) Stopovers"
+        cell.stops.text = "\(displayFlightInfo.stopoversCount) Stops"
         cell.totalDuration.text = "\(displayFlightInfo.totalDuration)"
         cell.airlinesName.text = displayFlightInfo.airlineName
 
@@ -226,9 +221,29 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
+    private func presentNoDetailsAlert() {
+           let alert = UIAlertController(title: "No Details Available", message: "There are no flight details available for the selected departure and destination.", preferredStyle: .alert)
+           alert.addAction(UIAlertAction(title: "OK", style: .default))
+           self.present(alert, animated: true)
+       }
+
+       // Present an alert when there's an error
+    private func presentErrorAlert(message: String) {
+           let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+           alert.addAction(UIAlertAction(title: "OK", style: .default))
+           self.present(alert, animated: true)
+    }
     private func parseFlightInfo(data: Data) -> [DisplayFlightInfo]? {
         do {
             let flightInfo = try JSONDecoder().decode(FlightInfo.self, from: data)
+            
+            guard !flightInfo.trips.isEmpty, !flightInfo.fares.isEmpty else {
+                           DispatchQueue.main.async {
+                               self.presentNoDetailsAlert()
+                           }
+                           return nil
+            }
+            
             var displayFlightInfoArray: [DisplayFlightInfo] = []
             
             for trip in flightInfo.trips {
