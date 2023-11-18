@@ -8,12 +8,39 @@
 import UIKit
 
 class RoundTripDisplayViewController: UIViewController {
-
+    
+    var cabinClassRound: String?
+    var fromLocationRound: String?
+    var toLocationRound: String?
+    var departureDateRound: Date?
+    var ReturnDateRound: Date?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientLayer()
         // Do any additional setup after loading the view.
     }
+    
+    private func createRequestURL() -> URL? {
+        guard let cabinClassRound = cabinClassRound,
+              let fromLocationRound = fromLocationRound,
+              let toLocationRound = toLocationRound,
+              let departureDateRound = departureDateRound,
+              let returnDateRound = ReturnDateRound else {
+            print("One or more required parameters are missing.")
+            return nil
+        }
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let departureDateString = dateFormatter.string(from: departureDateRound)
+        let returnDateString = dateFormatter.string(from: returnDateRound)
+
+        let urlString = "https://api.flightapi.io/roundtrip/65395e4d01b26894ef8d6f94/\(fromLocationRound)/\(toLocationRound)/\(departureDateString)/\(returnDateString)/1/0/1/\(cabinClassRound)/USD"
+        
+        return URL(string: urlString)
+    }
+
     
     private func addGradientLayer() {
         let gradientLayer = CAGradientLayer()

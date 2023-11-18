@@ -80,12 +80,14 @@ class RoundTripViewController: UIViewController,UITextFieldDelegate,UIPickerView
             }
         }
         else if segue.identifier == "roundTripToDisplay" {
-               /*if let displayVC = segue.destination as? OneWayDisplayViewController {
-                   displayVC.cabinClass = cabin.text
-                   displayVC.fromLocation = oneWayFrom.text
-                   displayVC.toLocation = oneWayTo.text
-                   displayVC.departureDate = oneWayDepartureDate.date
-               }*/
+               if let displayRoundVC = segue.destination as? RoundTripDisplayViewController{
+                    displayRoundVC.cabinClassRound = cabinRound.text
+                    displayRoundVC.fromLocationRound = roundTripFrom.text
+                    displayRoundVC.toLocationRound = roundTripFrom.text
+                    displayRoundVC.departureDateRound = roundTripDepartureDate.date
+                    displayRoundVC.ReturnDateRound = roundTripReturnDate.date
+                   
+                }
            }
     }
     
