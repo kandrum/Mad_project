@@ -8,18 +8,58 @@
 
 import UIKit
 
-class RoundTripViewController: UIViewController, UITextFieldDelegate,AirportSelectionDelegate {
+class RoundTripViewController: UIViewController,UITextFieldDelegate,UIPickerViewDelegate, UIPickerViewDataSource, AirportSelectionDelegate {
 
     
+    @IBOutlet weak var cabinRound: UITextField!
     @IBOutlet weak var roundTripFrom: UITextField!
-    
     @IBOutlet weak var roundTripTo: UITextField!
     @IBOutlet weak var roundTripDepartureDate: UIDatePicker!
     @IBOutlet weak var roundTripSearchButton: UIButton!
-    
     @IBOutlet weak var roundTripReturnDate: UIDatePicker!
     
+    @objc func dismissPicker() {
+        view.endEditing(true)
+    }
+    
     var selectedAirport:UITextField?
+    let cabinPickerRound = UIPickerView()
+    let cabinOptionsRound = ["Economy", "Business", "First", "Premium Economy"]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        roundTripFrom.placeholder = "From"
+        roundTripTo.placeholder = "To"
+        cabinRound.placeholder = "cabinclass"
+        roundTripFrom.delegate=self
+        roundTripTo.delegate=self
+        roundTripDepartureDate.minimumDate = Date()
+        roundTripReturnDate.minimumDate = Date()
+        roundTripDepartureDate.addTarget(self, action: #selector(departureDateChanged), for: .valueChanged)
+        
+        cabinPickerRound.delegate = self
+        cabinPickerRound.dataSource = self
+        cabinRound.inputView = cabinPickerRound
+        
+        let toolBarRound = UIToolbar()
+        toolBarRound.sizeToFit()
+        let doneButtonRound = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissPicker))
+        toolBarRound.setItems([doneButtonRound], animated: false)
+        cabinRound.inputAccessoryView = toolBarRound
+        
+        addGradientLayer()
+            
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+            if textField == roundTripFrom || textField == roundTripTo {
+                selectedAirport = textField
+                performSegue(withIdentifier: "AirportSuggestionSegue", sender: self)
+                return false // Prevents keyboard from appearing
+            }
+            return true
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         roundTripTo.resignFirstResponder()
@@ -27,49 +67,47 @@ class RoundTripViewController: UIViewController, UITextFieldDelegate,AirportSele
     }
 
     func airportSelected(_ airport: AirportViewController.Airport, forType: FlightType) {
-        selectedAirport?.text = airport.name
-
+        selectedAirport?.text = airport.iata
+        
     }
-    
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         if segue.identifier == "AirportSuggestionSegue" {
+     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("Preparing for segue: \(segue.identifier ?? "Unknown")")
+        if segue.identifier == "AirportSuggestionSegue" {
             if let airportVC = segue.destination as? AirportViewController {
                 airportVC.delegate = self
-                airportVC.flightType = selectedAirport == roundTripFrom ? .from : .to
+                airportVC.flightType = selectedAirport ==  roundTripFrom ? .from : .to
             }
-        }    }
-    
-    @IBAction func typeFromAirport(_ sender: UITextField) {
-        selectedAirport = sender
-        if(sender == roundTripFrom){
-            performSegue(withIdentifier: "AirportSuggestionSegue", sender: roundTripFrom)
         }
-    }
-    
-    @IBAction func typeToAirport(_ sender: UITextField) {
-        selectedAirport = sender
-        if(sender == roundTripTo){
-            performSegue(withIdentifier: "AirportSuggestionSegue", sender: roundTripFrom)
-        }
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        roundTripFrom.placeholder = "From"
-        roundTripTo.placeholder = "To"
-        roundTripFrom.delegate=self
-        roundTripTo.delegate=self
-        roundTripDepartureDate.minimumDate = Date()
-        roundTripReturnDate.minimumDate = Date()
-        roundTripDepartureDate.addTarget(self, action: #selector(departureDateChanged), for: .valueChanged)
-        addGradientLayer()
-            // Do any additional setup after loading the view.
+        else if segue.identifier == "roundTripToDisplay" {
+               /*if let displayVC = segue.destination as? OneWayDisplayViewController {
+                   displayVC.cabinClass = cabin.text
+                   displayVC.fromLocation = oneWayFrom.text
+                   displayVC.toLocation = oneWayTo.text
+                   displayVC.departureDate = oneWayDepartureDate.date
+               }*/
+           }
     }
     
     @objc func departureDateChanged() {
         let selectedDepartureDate = roundTripDepartureDate.date
         roundTripReturnDate.minimumDate = selectedDepartureDate
     }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+           return 1
+       }
 
+       func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+           return cabinOptionsRound.count
+       }
+
+       func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+           return cabinOptionsRound[row]
+       }
+
+       func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+           cabinRound.text = cabinOptionsRound[row]
+    }
     
  func addGradientLayer() {
         let gradientLayer = CAGradientLayer()
@@ -103,32 +141,6 @@ class RoundTripViewController: UIViewController, UITextFieldDelegate,AirportSele
             performSegue(withIdentifier: "roundTripToDisplay", sender: self)
         }
     }
-    /* func fetchAirports() {
-     let url = URL(string: "https://flight-radar1.p.rapidapi.com/airports/list")!
-     var request = URLRequest(url: url)
-     request.httpMethod = "GET"
-     request.addValue("64aae1ed6dmsh17bdb422aee544cp1dcfaejsn7e5847da9491", forHTTPHeaderField: "X-RapidAPI-Key")
-     request.addValue("flight-radar1.p.rapidapi.com", forHTTPHeaderField: "X-RapidAPI-Host")
+    
      
-     URLSession.shared.dataTask(with: request) { (data, response, error) in
-     if let error = error {
-     print("Error fetching data:", error)
-     return
-     }
-     
-     if let data = data {
-     do {
-     // Decode the AirportResponse object
-     let response = try JSONDecoder().decode(AirportResponse.self, from: data)
-     self.airports = response.rows // Assign the array of airports to your airports array
-     DispatchQueue.main.async {
-     self.table.reloadData()
-     }
-     } catch {
-     print("Error decoding data:", error)
-     }
-     }
-     }.resume()
-     } */
-     
-     }
+}
