@@ -136,53 +136,53 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
     }
     
     private func fetchDataFromAPI() {
-            guard let requestURL = createRequestURL() else {
-                print("Failed to create API request URL.")
-                return
+                guard let requestURL = createRequestURL() else {
+                    print("Failed to create API request URL.")
+                    return
+                }
+
+                URLSession.shared.dataTask(with: requestURL) { [weak self] data, response, error in
+                    if let error = error {
+                        DispatchQueue.main.async {
+                            // Handle the error, e.g., show an alert to the user
+                            self?.handleError(error)
+                        }
+                        return
+                    }
+                    
+                    guard let data = data else {
+                        DispatchQueue.main.async {
+                            // Handle the no data case, e.g., show an error message to the user
+                            self?.handleNoDataError()
+                        }
+                        return
+                    }
+                    
+                    // Parse the JSON data
+                    guard let flightInfoArray = self?.parseFlightInfo(data: data) else { return }
+
+                                DispatchQueue.main.async {
+                                    self?.displayFlightInfoArray = flightInfoArray
+                                    self?.onewaydisplaytable.reloadData()
+                                }
+                            }.resume()
+           }
+
+            // Helper methods to handle different errors
+            private func handleError(_ error: Error) {
+                // Present an alert or update the UI to show the error
+                print("Error fetching data: \(error.localizedDescription)")
             }
 
-            URLSession.shared.dataTask(with: requestURL) { [weak self] data, response, error in
-                if let error = error {
-                    DispatchQueue.main.async {
-                        // Handle the error, e.g., show an alert to the user
-                        self?.handleError(error)
-                    }
-                    return
-                }
-                
-                guard let data = data else {
-                    DispatchQueue.main.async {
-                        // Handle the no data case, e.g., show an error message to the user
-                        self?.handleNoDataError()
-                    }
-                    return
-                }
-                
-                // Parse the JSON data
-                guard let flightInfoArray = self?.parseFlightInfo(data: data) else { return }
+            private func handleNoDataError() {
+                // Present an alert or update the UI to indicate no data was received
+                print("No data received from the API.")
+            }
 
-                            DispatchQueue.main.async {
-                                self?.displayFlightInfoArray = flightInfoArray
-                                self?.onewaydisplaytable.reloadData()
-                            }
-                        }.resume()
-       }
-
-        // Helper methods to handle different errors
-        private func handleError(_ error: Error) {
-            // Present an alert or update the UI to show the error
-            print("Error fetching data: \(error.localizedDescription)")
-        }
-
-        private func handleNoDataError() {
-            // Present an alert or update the UI to indicate no data was received
-            print("No data received from the API.")
-        }
-
-        private func handleParsingError() {
-            // Present an alert or update the UI to show that there was a parsing error
-            print("Failed to parse flight information.")
-        }
+            private func handleParsingError() {
+                // Present an alert or update the UI to show that there was a parsing error
+                print("Failed to parse flight information.")
+            }
 
         private func createRequestURL() -> URL? {
                 guard let cabinClass = cabinClass,

@@ -83,7 +83,7 @@ class RoundTripViewController: UIViewController,UITextFieldDelegate,UIPickerView
                if let displayRoundVC = segue.destination as? RoundTripDisplayViewController{
                     displayRoundVC.cabinClassRound = cabinRound.text
                     displayRoundVC.fromLocationRound = roundTripFrom.text
-                    displayRoundVC.toLocationRound = roundTripFrom.text
+                    displayRoundVC.toLocationRound = roundTripTo.text
                     displayRoundVC.departureDateRound = roundTripDepartureDate.date
                     displayRoundVC.ReturnDateRound = roundTripReturnDate.date
                    

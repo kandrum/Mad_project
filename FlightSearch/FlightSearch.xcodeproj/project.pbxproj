@@ -24,6 +24,7 @@
 		5CA1DDC22AFDD988000E0732 /* OneWayDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1DDC12AFDD988000E0732 /* OneWayDisplayTableViewCell.swift */; };
 		5CBA28DC2AE74C96007332BF /* AirportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA28DB2AE74C96007332BF /* AirportViewController.swift */; };
 		5CBA28DE2AE7500E007332BF /* AirportNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA28DD2AE7500E007332BF /* AirportNameTableViewCell.swift */; };
+		5CBDF86F2B0974FE00DD8012 /* RoundTripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBDF86E2B0974FE00DD8012 /* RoundTripTableViewCell.swift */; };
 		7FFC1A402AE9BDAE0089F063 /* OneWayDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1A3F2AE9BDAE0089F063 /* OneWayDisplayViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		5CA1DDC12AFDD988000E0732 /* OneWayDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneWayDisplayTableViewCell.swift; sourceTree = "<group>"; };
 		5CBA28DB2AE74C96007332BF /* AirportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportViewController.swift; sourceTree = "<group>"; };
 		5CBA28DD2AE7500E007332BF /* AirportNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportNameTableViewCell.swift; sourceTree = "<group>"; };
+		5CBDF86E2B0974FE00DD8012 /* RoundTripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTripTableViewCell.swift; sourceTree = "<group>"; };
 		7FFC1A3F2AE9BDAE0089F063 /* OneWayDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneWayDisplayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +135,7 @@
 				5CBA28DD2AE7500E007332BF /* AirportNameTableViewCell.swift */,
 				7FFC1A3F2AE9BDAE0089F063 /* OneWayDisplayViewController.swift */,
 				5CA1DDC12AFDD988000E0732 /* OneWayDisplayTableViewCell.swift */,
+				5CBDF86E2B0974FE00DD8012 /* RoundTripTableViewCell.swift */,
 			);
 			path = FlightSearch;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				5CA1DDC22AFDD988000E0732 /* OneWayDisplayTableViewCell.swift in Sources */,
 				5C9258B72ADE170200E067D9 /* SceneDelegate.swift in Sources */,
 				5C77109F2AE20CE90042A127 /* MultiDisplayViewController.swift in Sources */,
+				5CBDF86F2B0974FE00DD8012 /* RoundTripTableViewCell.swift in Sources */,
 				5CBA28DC2AE74C96007332BF /* AirportViewController.swift in Sources */,
 				5C6026232ADF6CA00015577F /* MultiCityViewController.swift in Sources */,
 			);
