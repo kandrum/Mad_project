@@ -177,7 +177,7 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
             print("One or more required parameters are missing.")
             return nil
         }
-        print("From Location: \(fromLocationRound), To Location: \(toLocationRound)")
+       
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -186,7 +186,7 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
 
         let urlString = "https://api.flightapi.io/roundtrip/65395e4d01b26894ef8d6f94/\(fromLocationRound)/\(toLocationRound)/\(departureDateString)/\(returnDateString)/1/0/1/\(cabinClassRound)/USD"
         
-        print("Request URL: \(urlString)")
+       
         
         return URL(string: urlString)
     }
@@ -206,8 +206,8 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
         cell.secondTrip.text = flightInfo.returnRoute
         cell.firstAirlines.text = flightInfo.departureAirline
         cell.secondAirlines.text = flightInfo.returnAirline
-        cell.firstStops.text = flightInfo.stopoversOutbound
-        cell.secondStops.text = flightInfo.stopoversReturn
+        cell.firstStops.text = "\(flightInfo.stopoversOutbound)Stops"
+        cell.secondStops.text = "\(flightInfo.stopoversReturn)Stops"
         cell.firstTotalDuration.text = flightInfo.durationOutbound
         cell.secondTotalDuration.text = flightInfo.durationReturn
 
@@ -219,49 +219,53 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
     
     private func parseFlightInfoRound(data: Data) -> [DisplayInfoRound]? {
         let decoder = JSONDecoder()
-        
-        // Attempt to decode the data into the FlightSearchResponse struct
-        guard let searchResponse = try? decoder.decode(FlightSearchResponse.self, from: data) else {
-            return nil
-        }
-        
-        // Process the decoded data
-        var displayInfoArray = [DisplayInfoRound]()
-        
-        // Assuming that there is always at least one trip and fare in the response
-        let totalAmountUsd = searchResponse.fares.first?.price.totalAmountUsd ?? 0.0
-        
-        for trip in searchResponse.trips {
-            for legId in trip.legIds {
-                if let leg = searchResponse.legs.first(where: { $0.id == legId }) {
-                    let departureRoute = "\(leg.departureAirportCode) - \(leg.arrivalAirportCode)"
-                    let returnRoute = "\(leg.arrivalAirportCode) - \(leg.departureAirportCode)"
-                    let departureAirline = leg.segments.first?.airlineCode ?? ""
-                    let returnAirline = leg.segments.first?.airlineCode ?? ""
-                    let stopoversOutbound = String(leg.stopoversCount)
-                    let stopoversReturn = String(leg.stopoversCount)
-                    let durationOutbound = leg.duration
-                    let durationReturn = leg.duration
-                    
-                    let displayInfo = DisplayInfoRound(
-                        totalAmount: String(format: "$%.2f", totalAmountUsd),
-                        departureRoute: departureRoute,
-                        returnRoute: returnRoute,
-                        departureAirline: departureAirline,
-                        returnAirline: returnAirline,
-                        stopoversOutbound: stopoversOutbound,
-                        stopoversReturn: stopoversReturn,
-                        durationOutbound: durationOutbound,
-                        durationReturn: durationReturn
-                    )
-                    
-                    displayInfoArray.append(displayInfo)
-                }
+            guard let searchResponse = try? decoder.decode(FlightSearchResponse.self, from: data) else {
+                return nil
             }
-        }
-        
-        return displayInfoArray
+
+            var displayInfoArray = [DisplayInfoRound]()
+
+            for trip in searchResponse.trips {
+                // Assuming there are always exactly two legIds per trip, one for outbound and one for return
+                let outboundLegId = trip.legIds[0]
+                let returnLegId = trip.legIds[1]
+
+                guard let outboundLeg = searchResponse.legs.first(where: { $0.id == outboundLegId }),
+                      let returnLeg = searchResponse.legs.first(where: { $0.id == returnLegId }),
+                      let fare = searchResponse.fares.first(where: { $0.tripId == trip.id }) else {
+                    continue
+                }
+
+                let totalAmountUsd = fare.price.totalAmountUsd
+                
+                let firstSegment = outboundLeg.segments.first
+                let airlineCode =  outboundLeg.segments.first?.airlineCode ?? "Unknown"
+                let outboundAirlineName = searchResponse.airlines.first(where: { $0.code == airlineCode }) ?? Airline(name: "Unknown", code: "Unknown")
+                
+                
+                let secondSegment = returnLeg.segments.first
+                let airlineCode1 =  returnLeg.segments.first?.airlineCode ?? "Unknown"
+                let returnAirlineName = searchResponse.airlines.first(where: { $0.code == airlineCode1 }) ?? Airline(name: "Unknown", code: "Unknown")
+                
+                
+                let displayInfo = DisplayInfoRound(
+                    totalAmount: String(format: "$%.2f", totalAmountUsd),
+                    departureRoute: "\(outboundLeg.departureAirportCode) - \(outboundLeg.arrivalAirportCode)",
+                    returnRoute: "\(returnLeg.departureAirportCode) - \(returnLeg.arrivalAirportCode)",
+                    departureAirline: outboundAirlineName.name,
+                    returnAirline: returnAirlineName.name,
+                    stopoversOutbound: String(outboundLeg.stopoversCount),
+                    stopoversReturn: String(returnLeg.stopoversCount),
+                    durationOutbound: outboundLeg.duration,
+                    durationReturn: returnLeg.duration
+                )
+
+                displayInfoArray.append(displayInfo)
+            }
+
+            return displayInfoArray
     }
+    
     private func addGradientLayer() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
