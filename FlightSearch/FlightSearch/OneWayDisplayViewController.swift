@@ -9,6 +9,8 @@ import UIKit
 
 class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITableViewDataSource{
    
+    var selectedFlightInfo: DisplayFlightInfo?
+
     struct FlightInfo: Codable {
             let legs: [Leg]
             let trips: [Trip]
@@ -92,12 +94,12 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
             let totalAmountUsd: Double
             // Add other fields as needed
         }
-        struct DisplayFlightInfo {
+       /* struct DisplayFlightInfo {
             let airlineName: String
             let stopoversCount: Int
             let totalDuration: String
             let totalAmountUsd: Double
-        }
+        }*/
     
     var cabinClass: String?
     var fromLocation: String?
@@ -221,6 +223,20 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedFlightInfo = displayFlightInfoArray[indexPath.row]
+        performSegue(withIdentifier: "oneWayDetailSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "oneWayDetailSegue" {
+            if let destinationVC = segue.destination as? OneWayDetailViewController {
+                destinationVC.selectedFlightInfo = selectedFlightInfo
+            }
+        }
+    }
+
     private func presentNoDetailsAlert() {
            let alert = UIAlertController(title: "No Details Available", message: "There are no flight details available for the selected departure and destination.", preferredStyle: .alert)
            alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -252,7 +268,7 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                 continue
             }
             
-                let firstSegment = leg.segments.first
+               // let firstSegment = leg.segments.first
                 let airlineCode = leg.segments.first?.airlineCode ?? "Unknown"
                 let airline = flightInfo.airlines.first(where: { $0.code == airlineCode }) ?? Airline(name: "Unknown", code: "Unknown")
 
@@ -260,6 +276,7 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                 let hours = totalDurationMinutes / 60
                 let minutes = totalDurationMinutes % 60
                 let totalDuration = "\(hours)h \(minutes)m"
+                let departureAirport = flightInfo.airports.first(where: { $0.code == leg.departureAirportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
 
                 // Find the fare that matches the trip ID.
                 if let fare = flightInfo.fares.first(where: { $0.tripId == trip.id }) {
@@ -269,7 +286,8 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                         airlineName: airline.name,
                         stopoversCount: stopoversCount,
                         totalDuration: totalDuration,
-                        totalAmountUsd: totalAmountUsd
+                        totalAmountUsd: totalAmountUsd, 
+                        departureAirport: departureAirport.name
                     )
                     displayFlightInfoArray.append(displayFlightInfo)
                 } else {
