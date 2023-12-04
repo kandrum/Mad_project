@@ -106,6 +106,9 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
     var toLocation: String?
     var departureDate: Date?
     
+    @IBOutlet weak var labelSortBy: UILabel!
+    
+    
     @IBOutlet weak var onewaydisplaytable: UITableView!
     
     var displayFlightInfoArray: [DisplayFlightInfo] = []
@@ -303,6 +306,8 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
         
     }
 
+    @IBAction func filterByCheapest(_ sender: Any) {
+    }
     
     /*
      

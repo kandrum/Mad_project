@@ -82,6 +82,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Cheapest"/>
+                                <connections>
+                                    <action selector="filterByCheapest:" destination="fQZ-Lf-IrD" eventType="touchUpInside" id="6SI-QE-TJO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SFD-Ar-7Gn"/>
@@ -89,6 +92,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="6Df-K6-bjH"/>
                     <connections>
+                        <outlet property="labelSortBy" destination="Tca-8O-FM4" id="bF4-VS-i4R"/>
                         <outlet property="onewaydisplaytable" destination="Ki9-Be-BHs" id="A0F-3c-wHR"/>
                         <segue destination="1M4-Qt-fQx" kind="show" identifier="oneWayDetailSegue" id="OA0-pC-U8j"/>
                     </connections>
