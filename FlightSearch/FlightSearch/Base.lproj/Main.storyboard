@@ -86,6 +86,15 @@
                                     <action selector="filterByCheapest:" destination="fQZ-Lf-IrD" eventType="touchUpInside" id="i5H-uE-BZE"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfM-CU-QSg">
+                                <rect key="frame" x="162" y="118" width="69" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Stops"/>
+                                <connections>
+                                    <action selector="filterByLeastStops:" destination="fQZ-Lf-IrD" eventType="touchUpInside" id="gO9-OS-QB7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SFD-Ar-7Gn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
