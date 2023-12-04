@@ -82,6 +82,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Cheapest"/>
+                                <connections>
+                                    <action selector="filterByCheapest:" destination="fQZ-Lf-IrD" eventType="touchUpInside" id="i5H-uE-BZE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SFD-Ar-7Gn"/>
