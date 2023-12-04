@@ -474,6 +474,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Cheapest"/>
+                                <connections>
+                                    <action selector="filterByCheapestPrice:" destination="yex-dR-UCV" eventType="touchUpInside" id="qT4-eJ-DJl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jyt-oZ-E7h"/>
@@ -481,6 +484,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="9sN-d9-BVK"/>
                     <connections>
+                        <outlet property="labelSortByForRoundTrip" destination="StK-tz-jY7" id="QZd-hu-CBA"/>
                         <outlet property="roundTripTable" destination="wxM-Os-9wC" id="Vqi-1s-0Or"/>
                         <segue destination="t2m-Kj-XQI" kind="show" identifier="roundTripDetailsSegue" id="4xJ-3X-ZUF"/>
                     </connections>
