@@ -17,7 +17,7 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
         let airports: [Airport]
         // Add other fields as needed
     }
-
+    
     struct Leg: Codable {
         let id: String
         let departureTime: String
@@ -32,7 +32,7 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
         let segments: [Segment]
         // Add other fields as needed
     }
-
+    
     struct Segment: Codable {
         let durationMinutes: Int
         let stopoverDurationMinutes: Int
@@ -43,14 +43,14 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
         let designatorCode: String
         // Add other fields as needed
     }
-
+    
     struct Trip: Codable {
         let id: String
         let code: String
         let legIds: [String]
         // Add other fields as needed
     }
-
+    
     struct Fare: Codable {
         let paymentFees: [PaymentFee]
         let id: String
@@ -58,20 +58,20 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
         let tripId: String
         // Add other fields as needed
     }
-
+    
     struct Airline: Codable {
         let name: String
         let code: String
         // Add other fields as needed
     }
-
+    
     struct Airport: Codable {
         let name: String
         let code: String
         let cityCode: String
         // Add other fields as needed
     }
-
+    
     struct PaymentFee: Codable {
         let paymentMethodId: Int
         let currencyCode: String
@@ -81,7 +81,7 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
         let totalAmountUsd: Double
         // Add other fields as needed
     }
-
+    
     struct Price: Codable {
         let totalAmount: Double
         let totalAmountUsd: Double
@@ -120,53 +120,53 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
         // Do any additional setup after loading the view.
     }
     private func fetchFromAPI() {
-            guard let URL = createRequestURL() else {
-                print("Failed to create API request URL.")
+        guard let URL = createRequestURL() else {
+            print("Failed to create API request URL.")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: URL) { [weak self] data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    // Handle the error, e.g., show an alert to the user
+                    self?.handleError(error)
+                }
                 return
             }
-
-            URLSession.shared.dataTask(with: URL) { [weak self] data, response, error in
-                if let error = error {
-                    DispatchQueue.main.async {
-                        // Handle the error, e.g., show an alert to the user
-                        self?.handleError(error)
-                    }
-                    return
-    }
-                
-    guard let data = data else {
-    DispatchQueue.main.async {
-                        // Handle the no data case, e.g., show an error message to the user
-    self?.handleNoDataError()
-    }
-    return
-    }
-                
-                // Parse the JSON data
-                print(String(data: data, encoding: .utf8) ?? "Invalid JSON data")
-    guard let flightInfoArray = self?.parseFlightInfoRound(data: data) else { return }
-
-        DispatchQueue.main.async {
-                    self?.displayFlightInfoArrayRound = flightInfoArray
-                    self?.roundTripTable.reloadData()
-        }
+            
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    // Handle the no data case, e.g., show an error message to the user
+                    self?.handleNoDataError()
+                }
+                return
+            }
+            
+            // Parse the JSON data
+            print(String(data: data, encoding: .utf8) ?? "Invalid JSON data")
+            guard let flightInfoArray = self?.parseFlightInfoRound(data: data) else { return }
+            
+            DispatchQueue.main.async {
+                self?.displayFlightInfoArrayRound = flightInfoArray
+                self?.roundTripTable.reloadData()
+            }
         }.resume()
     }
-
-        // Helper methods to handle different errors
+    
+    // Helper methods to handle different errors
     private func handleError(_ error: Error) {
-            // Present an alert or update the UI to show the error
-      print("Error fetching data: \(error.localizedDescription)")
+        // Present an alert or update the UI to show the error
+        print("Error fetching data: \(error.localizedDescription)")
     }
-
+    
     private func handleNoDataError() {
-            // Present an alert or update the UI to indicate no data was received
-            print("No data received from the API.")
+        // Present an alert or update the UI to indicate no data was received
+        print("No data received from the API.")
     }
-
+    
     private func handleParsingError() {
-            // Present an alert or update the UI to show that there was a parsing error
-            print("Failed to parse flight information.")
+        // Present an alert or update the UI to show that there was a parsing error
+        print("Failed to parse flight information.")
     }
     
     private func createRequestURL() -> URL? {
@@ -178,16 +178,16 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
             print("One or more required parameters are missing.")
             return nil
         }
-       
+        
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let departureDateString = dateFormatter.string(from: departureDateRound)
         let returnDateString = dateFormatter.string(from: returnDateRound)
-
+        
         let urlString = "https://api.flightapi.io/roundtrip/6564f5d42a16c63beb7af6b0/\(fromLocationRound)/\(toLocationRound)/\(departureDateString)/\(returnDateString)/1/0/1/\(cabinClassRound)/USD"
         
-       
+        
         
         return URL(string: urlString)
     }
@@ -199,9 +199,9 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "roundcell", for: indexPath) as? RoundTripTableViewCell else {
             fatalError("Unable to dequeue RoundTripTableViewCell")
         }
-
+        
         let flightInfo = displayFlightInfoArrayRound[indexPath.row]
-
+        
         cell.currencyRound.text = flightInfo.totalAmount
         cell.fristTrip.text = flightInfo.departureRoute
         cell.secondTrip.text = flightInfo.returnRoute
@@ -211,8 +211,8 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
         cell.secondStops.text = "\(flightInfo.stopoversReturn)Stops"
         cell.firstTotalDuration.text = flightInfo.durationOutbound
         cell.secondTotalDuration.text = flightInfo.durationReturn
-
-        return cell   
+        
+        return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
@@ -220,51 +220,51 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
     
     private func parseFlightInfoRound(data: Data) -> [DisplayInfoRound]? {
         let decoder = JSONDecoder()
-            guard let searchResponse = try? decoder.decode(FlightSearchResponse.self, from: data) else {
-                return nil
+        guard let searchResponse = try? decoder.decode(FlightSearchResponse.self, from: data) else {
+            return nil
+        }
+        
+        var displayInfoArray = [DisplayInfoRound]()
+        
+        for trip in searchResponse.trips {
+            // Assuming there are always exactly two legIds per trip, one for outbound and one for return
+            let outboundLegId = trip.legIds[0]
+            let returnLegId = trip.legIds[1]
+            
+            guard let outboundLeg = searchResponse.legs.first(where: { $0.id == outboundLegId }),
+                  let returnLeg = searchResponse.legs.first(where: { $0.id == returnLegId }),
+                  let fare = searchResponse.fares.first(where: { $0.tripId == trip.id }) else {
+                continue
             }
-
-            var displayInfoArray = [DisplayInfoRound]()
-
-            for trip in searchResponse.trips {
-                // Assuming there are always exactly two legIds per trip, one for outbound and one for return
-                let outboundLegId = trip.legIds[0]
-                let returnLegId = trip.legIds[1]
-
-                guard let outboundLeg = searchResponse.legs.first(where: { $0.id == outboundLegId }),
-                      let returnLeg = searchResponse.legs.first(where: { $0.id == returnLegId }),
-                      let fare = searchResponse.fares.first(where: { $0.tripId == trip.id }) else {
-                    continue
-                }
-
-                let totalAmountUsd = fare.price.totalAmountUsd
-                
-                let firstSegment = outboundLeg.segments.first
-                let airlineCode =  outboundLeg.segments.first?.airlineCode ?? "Unknown"
-                let outboundAirlineName = searchResponse.airlines.first(where: { $0.code == airlineCode }) ?? Airline(name: "Unknown", code: "Unknown")
-                
-                
-                let secondSegment = returnLeg.segments.first
-                let airlineCode1 =  returnLeg.segments.first?.airlineCode ?? "Unknown"
-                let returnAirlineName = searchResponse.airlines.first(where: { $0.code == airlineCode1 }) ?? Airline(name: "Unknown", code: "Unknown")
-                
-                
-                let displayInfo = DisplayInfoRound(
-                    totalAmount: String(format: "$%.2f", totalAmountUsd),
-                    departureRoute: "\(outboundLeg.departureAirportCode) - \(outboundLeg.arrivalAirportCode)",
-                    returnRoute: "\(returnLeg.departureAirportCode) - \(returnLeg.arrivalAirportCode)",
-                    departureAirline: outboundAirlineName.name,
-                    returnAirline: returnAirlineName.name,
-                    stopoversOutbound: String(outboundLeg.stopoversCount),
-                    stopoversReturn: String(returnLeg.stopoversCount),
-                    durationOutbound: outboundLeg.duration,
-                    durationReturn: returnLeg.duration
-                )
-
-                displayInfoArray.append(displayInfo)
-            }
-
-            return displayInfoArray
+            
+            let totalAmountUsd = fare.price.totalAmountUsd
+            
+            let firstSegment = outboundLeg.segments.first
+            let airlineCode =  outboundLeg.segments.first?.airlineCode ?? "Unknown"
+            let outboundAirlineName = searchResponse.airlines.first(where: { $0.code == airlineCode }) ?? Airline(name: "Unknown", code: "Unknown")
+            
+            
+            let secondSegment = returnLeg.segments.first
+            let airlineCode1 =  returnLeg.segments.first?.airlineCode ?? "Unknown"
+            let returnAirlineName = searchResponse.airlines.first(where: { $0.code == airlineCode1 }) ?? Airline(name: "Unknown", code: "Unknown")
+            
+            
+            let displayInfo = DisplayInfoRound(
+                totalAmount: String(format: "$%.2f", totalAmountUsd),
+                departureRoute: "\(outboundLeg.departureAirportCode) - \(outboundLeg.arrivalAirportCode)",
+                returnRoute: "\(returnLeg.departureAirportCode) - \(returnLeg.arrivalAirportCode)",
+                departureAirline: outboundAirlineName.name,
+                returnAirline: returnAirlineName.name,
+                stopoversOutbound: String(outboundLeg.stopoversCount),
+                stopoversReturn: String(returnLeg.stopoversCount),
+                durationOutbound: outboundLeg.duration,
+                durationReturn: returnLeg.duration
+            )
+            
+            displayInfoArray.append(displayInfo)
+        }
+        
+        return displayInfoArray
     }
     
     private func addGradientLayer() {
@@ -281,8 +281,13 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-     @IBAction func filterByCheapestPrice(_ sender: Any) {
-     }
+    @IBAction func filterByCheapestPrice(_ sender: Any) {
+        
+        displayFlightInfoArrayRound.sort { Double($0.totalAmount.replacingOccurrences(of: "$", with: "")) ?? 0 < Double($1.totalAmount.replacingOccurrences(of: "$", with: "")) ?? 0 }
+        
+        roundTripTable.reloadData()
+    }
+
     /*
      // MARK: - Navigation
 
