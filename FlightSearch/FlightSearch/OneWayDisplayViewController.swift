@@ -316,7 +316,9 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
     
     @IBAction func filterByLeastStops(_ sender: Any) {
         
-        
+        displayFlightInfoArray.sort { $0.stopoversCount < $1.stopoversCount }
+
+            onewaydisplaytable.reloadData()
     }
 
     
