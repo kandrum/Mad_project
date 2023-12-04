@@ -307,6 +307,11 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
     }
 
     @IBAction func filterByCheapest(_ sender: Any) {
+        
+        displayFlightInfoArray.sort { $0.totalAmountUsd < $1.totalAmountUsd }
+
+                    onewaydisplaytable.reloadData()
+
     }
     
     /*
