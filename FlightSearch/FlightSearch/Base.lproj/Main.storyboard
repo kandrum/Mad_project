@@ -104,6 +104,15 @@
                                     <action selector="filterByAirlineName:" destination="fQZ-Lf-IrD" eventType="touchUpInside" id="9yb-yX-yMx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="woo-cz-XwC">
+                                <rect key="frame" x="297" y="118" width="90" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Duration"/>
+                                <connections>
+                                    <action selector="filterByShortestDuration:" destination="fQZ-Lf-IrD" eventType="touchUpInside" id="6Ht-cC-Srw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SFD-Ar-7Gn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
