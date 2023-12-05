@@ -290,8 +290,11 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBAction func filterByLeastStopsRoundTrip(_ sender: Any) {
         
+        displayFlightInfoArrayRound.sort { ($0.stopoversOutbound + $0.stopoversReturn) < ($1.stopoversOutbound + $1.stopoversReturn) }
         
-    }
+        roundTripTable.reloadData()
+        
+        }
 
 
 
