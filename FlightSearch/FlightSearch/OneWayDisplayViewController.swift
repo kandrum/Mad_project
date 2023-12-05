@@ -329,11 +329,13 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
     }
     
     
-    
     @IBAction func filterByShortestDuration(_ sender: Any) {
         
-        
-    }
+            displayFlightInfoArray.sort { $0.totalDuration < $1.totalDuration }
+
+            onewaydisplaytable.reloadData()
+        }
+
     
 }
 
