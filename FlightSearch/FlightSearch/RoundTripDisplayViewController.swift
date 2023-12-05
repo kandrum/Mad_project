@@ -298,8 +298,14 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBAction func filterByAirlineNameRoundTrip(_ sender: Any) {
         
+            displayFlightInfoArrayRound.sort { ($0.departureAirline, $0.returnAirline) < ($1.departureAirline, $1.returnAirline) }
+
+            roundTripTable.reloadData()
+        }
+
         
-    }
+        
+    
 
 
 
