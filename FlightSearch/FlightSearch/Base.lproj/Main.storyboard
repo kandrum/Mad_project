@@ -490,6 +490,15 @@
                                     <action selector="filterByCheapestPrice:" destination="yex-dR-UCV" eventType="touchUpInside" id="qT4-eJ-DJl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ToY-Ii-9JC">
+                                <rect key="frame" x="148" y="102" width="69" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Stops"/>
+                                <connections>
+                                    <action selector="filterByLeastStopsRoundTrip:" destination="yex-dR-UCV" eventType="touchUpInside" id="o9W-5u-AiU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jyt-oZ-E7h"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
