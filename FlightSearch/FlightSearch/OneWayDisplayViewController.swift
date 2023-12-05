@@ -322,7 +322,12 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
     }
     
     @IBAction func filterByAirlineName(_ sender: Any) {
-        
+      
+            displayFlightInfoArray.sort { $0.airlineName < $1.airlineName }
+
+            onewaydisplaytable.reloadData()
+        }
+
     }
 
 
