@@ -95,6 +95,15 @@
                                     <action selector="filterByLeastStops:" destination="fQZ-Lf-IrD" eventType="touchUpInside" id="gO9-OS-QB7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFq-ZM-mjs">
+                                <rect key="frame" x="227" y="118" width="69" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Name"/>
+                                <connections>
+                                    <action selector="filterByAirlineName:" destination="fQZ-Lf-IrD" eventType="touchUpInside" id="9yb-yX-yMx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SFD-Ar-7Gn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

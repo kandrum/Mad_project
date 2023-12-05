@@ -320,6 +320,11 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
 
             onewaydisplaytable.reloadData()
     }
+    
+    @IBAction func filterByAirlineName(_ sender: Any) {
+        
+    }
+
 
     
     /*
