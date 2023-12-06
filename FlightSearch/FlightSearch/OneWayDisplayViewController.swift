@@ -202,7 +202,7 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let departureDateString = dateFormatter.string(from: departureDate)
         
-        let urlString = "https://api.flightapi.io/onewaytrip/6564f5d42a16c63beb7af6b0/\(fromLocation)/\(toLocation)/\(departureDateString)/1/0/0/\(cabinClass)/USD"
+        let urlString = "https://api.flightapi.io/onewaytrip/6570facdc6eb315e7eecc451/\(fromLocation)/\(toLocation)/\(departureDateString)/1/0/0/\(cabinClass)/USD"
         
         return URL(string: urlString)
     }
@@ -286,6 +286,8 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                 let layoverAirportCode = leg.stopoverAirportCodes.first ?? "Unknown"
                 let layoverAirport = flightInfo.airports.first(where: { $0.code == layoverAirportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
                 let layoverTime = leg.stopoverDuration
+            let layoverAirport1ArrivalTime = extractTime(from:leg.segments[0].arrivalDateTime)
+                let layoverAirport1DepartureTime = extractTime(from: leg.segments[1].arrivalDateTime)
                 // Find the fare that matches the trip ID.
                 if let fare = flightInfo.fares.first(where: { $0.tripId == trip.id }) {
                     let totalAmountUsd = fare.price.totalAmountUsd
@@ -300,7 +302,9 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                         layoverAirport: layoverAirport.name,
                         arrivalAirport: arrivalAirport.name,
                         arrivalTime: arrivalTime,
-                        layoverDuration: layoverTime
+                        layoverDuration: layoverTime,
+                        layoverAirport1ArrivalTime: layoverAirport1ArrivalTime ?? "",
+                        layoverAirport1DepartureTime: layoverAirport1DepartureTime ?? ""
                     )
                     displayFlightInfoArray.append(displayFlightInfo)
                 } else {
@@ -350,7 +354,19 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
 }
 
 
+func extractTime(from dateTimeString: String) -> String? {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 
+    if let dateTime = dateFormatter.date(from: dateTimeString) {
+        dateFormatter.dateFormat = "HH:mm"
+        let time = dateFormatter.string(from: dateTime)
+        return time
+    } else {
+        print("Error parsing date")
+        return nil
+    }
+}
     
     /*
      

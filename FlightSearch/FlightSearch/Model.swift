@@ -19,6 +19,8 @@ struct DisplayFlightInfo {
     let arrivalAirport: String
     let arrivalTime: String
     let layoverDuration: String
+    let layoverAirport1ArrivalTime: String
+    let layoverAirport1DepartureTime: String
 }
 
 struct FlightInfo: Codable {
@@ -54,6 +56,8 @@ struct Segment: Codable {
     let airlineCode: String
     let cabin: String
     let designatorCode: String
+    let departureDateTime: String
+    let arrivalDateTime: String
     // Add other fields as needed
 }
 
