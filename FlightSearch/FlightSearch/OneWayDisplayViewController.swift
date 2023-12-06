@@ -288,6 +288,7 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                 let layoverTime = leg.stopoverDuration
             let layoverAirport1ArrivalTime = extractTime(from:leg.segments[0].arrivalDateTime)
                 let layoverAirport1DepartureTime = extractTime(from: leg.segments[1].arrivalDateTime)
+                
                 // Find the fare that matches the trip ID.
                 if let fare = flightInfo.fares.first(where: { $0.tripId == trip.id }) {
                     let totalAmountUsd = fare.price.totalAmountUsd

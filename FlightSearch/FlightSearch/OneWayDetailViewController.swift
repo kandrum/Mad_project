@@ -37,6 +37,20 @@ class OneWayDetailViewController: UIViewController {
     
     @IBOutlet weak var reachTime: UILabel!
     
+    
+    
+    @IBOutlet weak var layoverLabel: UILabel!
+    
+    @IBOutlet weak var secondLayoverDuration: UILabel!
+    
+    @IBOutlet weak var layoverTwoAirport: UILabel!
+    
+    @IBOutlet weak var layover2AirportDepartureTime: UILabel!
+    
+    @IBOutlet weak var destionation: UILabel!
+    
+    @IBOutlet weak var destinationTime: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientLayer()
@@ -54,6 +68,33 @@ class OneWayDetailViewController: UIViewController {
                 layoverAirportArrivalTime.text = selectedFlightInfo?.layoverAirport1ArrivalTime
                 layOverDepartureTime.text = selectedFlightInfo?.layoverAirport1DepartureTime
                 
+                layoverLabel.isHidden = true
+                secondLayoverDuration.isHidden = true
+                layoverTwoAirport.isHidden = true
+                layover2AirportDepartureTime.isHidden = true
+                destionation.isHidden = true
+                destinationTime.isHidden = true
+            }
+            
+            
+            if(selectedFlightInfo?.stopoversCount == 2)
+            {
+                airwayFirstFlight.text = selectedFlightInfo?.airlineName
+                totalDuration.text = selectedFlightInfo?.totalDuration
+                departureAirport.text = selectedFlightInfo?.departureAirport
+                startTime.text = selectedFlightInfo?.departureTime
+                layoverAirport.text = selectedFlightInfo?.layoverAirport
+                layoverAirportArrivalTime.text = selectedFlightInfo?.layoverAirport1ArrivalTime
+                layoverDuration.text = selectedFlightInfo?.layoverDuration
+                
+                layoverAirportStart.text = selectedFlightInfo?.layoverAirport
+                layOverDepartureTime.text = selectedFlightInfo?.layoverAirport1DepartureTime
+                
+                
+                
+                destionation.text = selectedFlightInfo?.arrivalAirport
+                destinationTime.text = selectedFlightInfo?.arrivalTime
+
             }
             
         }
