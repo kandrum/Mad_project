@@ -202,7 +202,7 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let departureDateString = dateFormatter.string(from: departureDate)
         
-        let urlString = "https://api.flightapi.io/onewaytrip/65395e4d01b26894ef8d6f94/\(fromLocation)/\(toLocation)/\(departureDateString)/1/0/0/\(cabinClass)/USD"
+        let urlString = "https://api.flightapi.io/onewaytrip/6564f5d42a16c63beb7af6b0/\(fromLocation)/\(toLocation)/\(departureDateString)/1/0/0/\(cabinClass)/USD"
         
         return URL(string: urlString)
     }
@@ -276,13 +276,16 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                 let airline = flightInfo.airlines.first(where: { $0.code == airlineCode }) ?? Airline(name: "Unknown", code: "Unknown")
                 
                 let departureTime = leg.departureTime
+                let arrivalTime = leg.arrivalTime
                 let totalDurationMinutes = leg.segments.reduce(0) { $0 + $1.durationMinutes }
                 let hours = totalDurationMinutes / 60
                 let minutes = totalDurationMinutes % 60
                 let totalDuration = "\(hours)h \(minutes)m"
                 let departureAirport = flightInfo.airports.first(where: { $0.code == leg.departureAirportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
+                let arrivalAirport = flightInfo.airports.first(where: { $0.code == leg.arrivalAirportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
                 let layoverAirportCode = leg.stopoverAirportCodes.first ?? "Unknown"
                 let layoverAirport = flightInfo.airports.first(where: { $0.code == layoverAirportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
+                let layoverTime = leg.stopoverDuration
                 // Find the fare that matches the trip ID.
                 if let fare = flightInfo.fares.first(where: { $0.tripId == trip.id }) {
                     let totalAmountUsd = fare.price.totalAmountUsd
@@ -294,7 +297,10 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                         totalAmountUsd: totalAmountUsd,
                         departureAirport: departureAirport.name, 
                         departureTime: departureTime, 
-                        layoverAirport: layoverAirport.name
+                        layoverAirport: layoverAirport.name,
+                        arrivalAirport: arrivalAirport.name,
+                        arrivalTime: arrivalTime,
+                        layoverDuration: layoverTime
                     )
                     displayFlightInfoArray.append(displayFlightInfo)
                 } else {
