@@ -11,89 +11,89 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
     
     var selectedFlightInfo: DisplayFlightInfo?
     
-    struct FlightInfo: Codable {
-        let legs: [Leg]
-        let trips: [Trip]
-        let fares: [Fare]
-        let airlines: [Airline]
-        let airports: [Airport]
-        // Add other fields as needed
-    }
-    
-    struct Leg: Codable {
-        let id: String
-        let departureTime: String
-        let arrivalTime: String
-        let duration: String
-        let departureAirportCode: String
-        let arrivalAirportCode: String
-        let airlineCodes: [String]
-        let stopoverAirportCodes: [String]
-        let allianceCodes: [String]
-        let stopoversCount: Int
-        let segments: [Segment]
-        // Add other fields as needed
-    }
-    
-    struct Segment: Codable {
-        let durationMinutes: Int
-        let stopoverDurationMinutes: Int
-        let departureAirportCode: String
-        let arrivalAirportCode: String
-        let airlineCode: String
-        let cabin: String
-        let designatorCode: String
-        // Add other fields as needed
-    }
-    
-    struct Trip: Codable {
-        let id: String
-        let code: String
-        let legIds: [String]
-        // Add other fields as needed
-    }
-    
-    struct Fare: Codable {
-        let paymentFees: [PaymentFee]
-        let id: String
-        let price: Price
-        let tripId: String            // Add other fields as needed
-    }
-    
-    struct Airline: Codable {
-        let name: String
-        let code: String
-        // Add other fields as needed
-    }
-    
-    struct Airport: Codable {
-        let name: String
-        let code: String
-        let cityCode: String
-        // Add other fields as needed
-    }
-    
-    struct City: Codable {
-        let code: String
-        let name: String
-        // Add other fields as needed
-    }
-    
-    struct PaymentFee: Codable {
-        let paymentMethodId: Int
-        let currencyCode: String
-        let amount: Double
-        let amountUsd: Double
-        let totalAmount: Double
-        let totalAmountUsd: Double
-        // Add other fields as needed
-    }
-    
-    struct Price: Codable {
-        let totalAmount: Double
-        let totalAmountUsd: Double
-        // Add other fields as needed
-    }
+//    struct FlightInfo: Codable {
+//        let legs: [Leg]
+//        let trips: [Trip]
+//        let fares: [Fare]
+//        let airlines: [Airline]
+//        let airports: [Airport]
+//        // Add other fields as needed
+//    }
+//    
+//    struct Leg: Codable {
+//        let id: String
+//        let departureTime: String
+//        let arrivalTime: String
+//        let duration: String
+//        let departureAirportCode: String
+//        let arrivalAirportCode: String
+//        let airlineCodes: [String]
+//        let stopoverAirportCodes: [String]
+//        let allianceCodes: [String]
+//        let stopoversCount: Int
+//        let segments: [Segment]
+//        // Add other fields as needed
+//    }
+//    
+//    struct Segment: Codable {
+//        let durationMinutes: Int
+//        let stopoverDurationMinutes: Int
+//        let departureAirportCode: String
+//        let arrivalAirportCode: String
+//        let airlineCode: String
+//        let cabin: String
+//        let designatorCode: String
+//        // Add other fields as needed
+//    }
+//    
+//    struct Trip: Codable {
+//        let id: String
+//        let code: String
+//        let legIds: [String]
+//        // Add other fields as needed
+//    }
+//    
+//    struct Fare: Codable {
+//        let paymentFees: [PaymentFee]
+//        let id: String
+//        let price: Price
+//        let tripId: String            // Add other fields as needed
+//    }
+//    
+//    struct Airline: Codable {
+//        let name: String
+//        let code: String
+//        // Add other fields as needed
+//    }
+//    
+//    struct Airport: Codable {
+//        let name: String
+//        let code: String
+//        let cityCode: String
+//        // Add other fields as needed
+//    }
+//    
+//    struct City: Codable {
+//        let code: String
+//        let name: String
+//        // Add other fields as needed
+//    }
+//    
+//    struct PaymentFee: Codable {
+//        let paymentMethodId: Int
+//        let currencyCode: String
+//        let amount: Double
+//        let amountUsd: Double
+//        let totalAmount: Double
+//        let totalAmountUsd: Double
+//        // Add other fields as needed
+//    }
+//    
+//    struct Price: Codable {
+//        let totalAmount: Double
+//        let totalAmountUsd: Double
+//        // Add other fields as needed
+//    }
     /* struct DisplayFlightInfo {
      let airlineName: String
      let stopoversCount: Int
@@ -275,12 +275,14 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                 let airlineCode = leg.segments.first?.airlineCode ?? "Unknown"
                 let airline = flightInfo.airlines.first(where: { $0.code == airlineCode }) ?? Airline(name: "Unknown", code: "Unknown")
                 
+                let departureTime = leg.departureTime
                 let totalDurationMinutes = leg.segments.reduce(0) { $0 + $1.durationMinutes }
                 let hours = totalDurationMinutes / 60
                 let minutes = totalDurationMinutes % 60
                 let totalDuration = "\(hours)h \(minutes)m"
                 let departureAirport = flightInfo.airports.first(where: { $0.code == leg.departureAirportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
-                
+                let layoverAirportCode = leg.stopoverAirportCodes.first ?? "Unknown"
+                let layoverAirport = flightInfo.airports.first(where: { $0.code == layoverAirportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
                 // Find the fare that matches the trip ID.
                 if let fare = flightInfo.fares.first(where: { $0.tripId == trip.id }) {
                     let totalAmountUsd = fare.price.totalAmountUsd
@@ -290,7 +292,9 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                         stopoversCount: stopoversCount,
                         totalDuration: totalDuration,
                         totalAmountUsd: totalAmountUsd,
-                        departureAirport: departureAirport.name
+                        departureAirport: departureAirport.name, 
+                        departureTime: departureTime, 
+                        layoverAirport: layoverAirport.name
                     )
                     displayFlightInfoArray.append(displayFlightInfo)
                 } else {
