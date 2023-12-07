@@ -10,7 +10,7 @@ import UIKit
 
 struct DisplayFlightInfo {
     let airlineName: String
-    let stopoversCount: Int
+    let stopoversCount: String
     let totalDuration: String
     let totalAmountUsd: Double
     let departureAirport: String

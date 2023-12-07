@@ -32,6 +32,7 @@ class OneWayViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         cabinPicker.delegate = self
         cabinPicker.dataSource = self
         cabin.inputView = cabinPicker
+        cabin.text = cabinOptions[0]
 
         // Add toolbar with Done button to cabin picker
         let toolBar = UIToolbar()

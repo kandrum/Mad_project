@@ -71,7 +71,7 @@ class AirportViewController: UIViewController , UITableViewDataSource, UITableVi
         let url = URL(string: "https://flight-radar1.p.rapidapi.com/airports/list")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue("13380b7838mshce83d319c648331p157b04jsne33a7eee0108", forHTTPHeaderField: "X-RapidAPI-Key")
+        request.addValue("98b4f47d9emsh9fa84f1c948f3eep13bde3jsnf45f88745cc7", forHTTPHeaderField: "X-RapidAPI-Key")
         request.addValue("flight-radar1.p.rapidapi.com", forHTTPHeaderField: "X-RapidAPI-Host")
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
