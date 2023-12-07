@@ -45,4 +45,6 @@ struct DisplayInfoRound {
     let outboundsecondLayoverArrivalTime: String
     let outboundsecondLayoverDepartureTime: String
     let returnfirstLayoverDuration:String
+    let returnfirstLayoverArrivalTime:String
+    let returnfirstlayoverDepartureTime:String
 }
