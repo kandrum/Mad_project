@@ -184,7 +184,9 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
             let returnlayoverAirport1ArrivalTime = extractTime(from:returnLeg.segments[0].arrivalDateTime) ?? "12:23"
             
            
-            
+//            
+//            let outboundsecondLayoverAirport = outboundLeg.segments[1].arrivalAirportCode.first ?? "Unknown" //outboundLeg.segments[1].arrivalAirportCode.first ?? "Unknown"
+//            let outboundsecondlayoverAirport = searchResponse.airports.first(where: { $0.code == outboundsecondLayoverAirport }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
             
             
             let secondSegment = returnLeg.segments.first
