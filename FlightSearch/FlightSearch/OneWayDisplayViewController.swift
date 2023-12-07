@@ -328,7 +328,7 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                         arrivalTime: arrivalTime,
                         layoverDuration: convertMinutesToHoursAndMinutes(minutes: layoverTime),
                         layoverAirport1ArrivalTime: layoverAirport1ArrivalTime ?? "",
-                        layoverAirport1DepartureTime: layoverAirport1DepartureTime ?? "", secondlayoverAirport: secondStopAirport?.name ?? "",
+                        layoverAirport1DepartureTime: layoverAirport1DepartureTime , secondlayoverAirport: secondStopAirport?.name ?? "",
                         secondLayoverDuration: secondLayoverDuration,
                         secondLayoverArrivalTime: secondLayoverArrivalTime,
                         secondLayoverDepartureTime: secondLayoverDepartureTime
