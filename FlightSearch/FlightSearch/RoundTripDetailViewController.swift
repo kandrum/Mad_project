@@ -20,8 +20,6 @@ class RoundTripDetailViewController: UIViewController,UITableViewDelegate, UITab
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "detailroundtripcell", for: indexPath) as? RoundTripDetailCellTableViewCell else {
             fatalError("Unable to dequeue RoundTripTableViewCell")
         }
-        
-        print(selectFlight?.departureRoute)
         if((indexPath.row) == 0)
         {
             cell.airlines.text = selectFlight?.departureAirline
@@ -48,6 +46,11 @@ class RoundTripDetailViewController: UIViewController,UITableViewDelegate, UITab
         return 300
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: "roundtriptooneway", sender: self)
+    }
     
     
     @IBOutlet weak var roundTripTable: UITableView!

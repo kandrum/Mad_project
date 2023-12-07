@@ -289,7 +289,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HCm-a8-V41" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-283.20610687022901" y="2031.6901408450706"/>
+            <point key="canvasLocation" x="-683" y="2036"/>
         </scene>
         <!--Round Trip Detail View Controller-->
         <scene sceneID="ucn-nT-i2h">
@@ -373,11 +373,12 @@
                     <navigationItem key="navigationItem" id="0JL-QD-FwK"/>
                     <connections>
                         <outlet property="roundTripTable" destination="1gm-B4-U4x" id="rir-GS-0i1"/>
+                        <segue destination="1M4-Qt-fQx" kind="show" identifier="roundtriptooneway" id="kUM-mh-7N4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nG2-bv-8wa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="664.8854961832061" y="2031.6901408450706"/>
+            <point key="canvasLocation" x="668" y="2054"/>
         </scene>
         <!--One Way View Controller-->
         <scene sceneID="yVe-v6-pTC">
@@ -920,6 +921,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="hqS-72-pD6"/>
+        <segue reference="kUM-mh-7N4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.right.fill" catalog="system" width="128" height="104"/>
