@@ -174,7 +174,16 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
             let outboundFirstlayoverAirportCode = outboundLeg.stopoverAirportCodes.first ?? "Unknown"
             let outboundFirstlayoverAirport = searchResponse.airports.first(where: { $0.code == outboundFirstlayoverAirportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
             
-            //let outboundFirstlayoverFlightArrivalTime = searchResponse.
+            
+            let outboundSecondlayoverAirportCode = outboundLeg.segments[1].arrivalAirportCode ?? "Unknown"
+            let outboundSecondlayoverAirport = searchResponse.airports.first(where: { $0.code == outboundSecondlayoverAirportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
+            let outboundSecondLayoverArrivalTime = extractTime(from: outboundLeg.segments[1].arrivalDateTime) ?? "12:23"
+            let outboundSecondLayoverDepartureTime = extractTime(from: outboundLeg.segments[1].departureDateTime) ?? "1:34"
+            let outboundSecondLayoverDuration = convertMinutesToHoursAndMinutes(minutes: outboundLeg.segments[1].stopoverDurationMinutes)
+
+        
+            
+    
             let outboundlayoverAirport1DepartureTime = extractTime(from:outboundLeg.segments[0].departureDateTime) ?? "1:34"
             
             let returnlayoverAirport1DepartureTime = extractTime(from: returnLeg.segments[1].departureDateTime) ?? "1:34"
@@ -182,6 +191,8 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
             let layoverTime =  outboundLeg.segments[0].stopoverDurationMinutes
             let outboundlayoverAirport1ArrivalTime = extractTime(from:outboundLeg.segments[0].arrivalDateTime) ?? "12:23"
             let returnlayoverAirport1ArrivalTime = extractTime(from:returnLeg.segments[0].arrivalDateTime) ?? "12:23"
+            
+            
             
            
 //            
@@ -224,10 +235,10 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
                 outboundfirstLayoverAirport: outboundFirstlayoverAirport.name,
                 outboundfirstLayoverArrivalTime: outboundlayoverAirport1ArrivalTime,
                 outboundfirstLayoverDepartureTime: outboundlayoverAirport1DepartureTime,
-                outboundsecondLayoverDuration: "",
-                outboundsecondLayoverAirport: "",
-                outboundsecondLayoverArrivalTime: "",
-                outboundsecondLayoverDepartureTime: "",
+                outboundsecondLayoverDuration: outboundSecondLayoverDuration,
+                outboundsecondLayoverAirport: outboundSecondlayoverAirport.name,
+                outboundsecondLayoverArrivalTime: outboundSecondLayoverArrivalTime,
+                outboundsecondLayoverDepartureTime: outboundSecondLayoverDepartureTime,
                 returnfirstLayoverDuration: returnlayoverTime,
                 returnfirstLayoverArrivalTime: returnlayoverAirport1ArrivalTime, returnfirstlayoverDepartureTime: returnlayoverAirport1DepartureTime
             )

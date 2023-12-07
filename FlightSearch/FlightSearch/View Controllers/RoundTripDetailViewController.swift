@@ -70,10 +70,10 @@ class RoundTripDetailViewController: UIViewController,UITableViewDelegate, UITab
                                                     layoverDuration: selectFlight?.outboundfirstLayoverDuration ?? "4h",
                                                     layoverAirport1ArrivalTime: selectFlight?.outboundfirstLayoverArrivalTime ?? "3:45",
                                                     layoverAirport1DepartureTime: selectFlight?.outboundfirstLayoverDepartureTime ?? "11:45",
-                secondlayoverAirport: "",
-                secondLayoverDuration: "",
-               secondLayoverArrivalTime: "",
-              secondLayoverDepartureTime: ""
+                                                    secondlayoverAirport: selectFlight?.outboundsecondLayoverAirport ?? "Unknown",
+                                                    secondLayoverDuration: selectFlight?.outboundsecondLayoverDuration ?? "3h 13m",
+                                                    secondLayoverArrivalTime: selectFlight?.outboundsecondLayoverArrivalTime ?? "1:23",
+                                                    secondLayoverDepartureTime: selectFlight?.outboundsecondLayoverDepartureTime ?? "4:34"
              )
             
         }
@@ -93,7 +93,7 @@ class RoundTripDetailViewController: UIViewController,UITableViewDelegate, UITab
                                                     layoverDuration: selectFlight?.returnfirstLayoverDuration ?? "4h",
                                                     layoverAirport1ArrivalTime: selectFlight?.returnfirstLayoverArrivalTime ?? "5:45",
                                                     layoverAirport1DepartureTime: selectFlight?.returnfirstlayoverDepartureTime ?? "1:34",
-                secondlayoverAirport: "",
+                                                    secondlayoverAirport: selectFlight?.outboundsecondLayoverAirport ?? "Unknown",
                 secondLayoverDuration: "",
                secondLayoverArrivalTime: "",
               secondLayoverDepartureTime: ""

@@ -62,7 +62,7 @@ class RoundTripSelectedDetailViewController: UIViewController {
         addGradientLayer()
         let stopsCountString = selectFlight!.stopoversCount
         let stopsCount = Int(stopsCountString)
-        if( stopsCount == 2)
+        if( stopsCount ?? 2 >= 2)
         {
             airlines.text = selectFlight?.airlineName
             totalDuration.text = selectFlight?.totalDuration
@@ -72,7 +72,12 @@ class RoundTripSelectedDetailViewController: UIViewController {
             firstlayoverAirport.text = selectFlight?.layoverAirport
             firstLayoverArrivalTime.text = selectFlight?.layoverAirport1ArrivalTime
             firstLayoverport.text = selectFlight?.layoverAirport
-            
+            firstLayoverDepartureTime.text = selectFlight?.layoverAirport1DepartureTime
+            secondLayoverport.text = selectFlight?.secondlayoverAirport
+            secondLayoverDuration.text = selectFlight?.secondLayoverDuration
+            secondLayoverAiport.text = selectFlight?.secondlayoverAirport
+            secondLayoverDepartureTime.text = selectFlight?.secondLayoverDepartureTime
+            secondLayoverArrivalTime.text = selectFlight?.secondLayoverArrivalTime
             destinationAirport.text = selectFlight?.arrivalAirport
             arrivalTime.text = selectFlight?.arrivalTime
         }
