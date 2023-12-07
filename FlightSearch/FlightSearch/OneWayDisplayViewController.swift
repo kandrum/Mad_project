@@ -276,7 +276,7 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                 let airline = flightInfo.airlines.first(where: { $0.code == airlineCode }) ?? Airline(name: "Unknown", code: "Unknown")
                 
                 let departureTime = leg.departureTime
-                let arrivalTime = leg.arrivalTime
+                var arrivalTime = leg.arrivalTime
                 let totalDurationMinutes = leg.segments.reduce(0) { $0 + $1.durationMinutes }
                 let hours = totalDurationMinutes / 60
                 let minutes = totalDurationMinutes % 60
@@ -307,6 +307,10 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
 
                 }
                 
+                if(leg.stopoversCount == 1)
+                {
+                    arrivalTime = leg.arrivalTime
+                }
                 
                 // Find the fare that matches the trip ID.
                 if let fare = flightInfo.fares.first(where: { $0.tripId == trip.id }) {

@@ -24,6 +24,8 @@ class OneWayDetailViewController: UIViewController {
     @IBOutlet weak var layoverAirport: UILabel!
     
     
+    @IBOutlet weak var layOver: UILabel!
+    
     @IBOutlet weak var layoverAirportArrivalTime: UILabel!
     
     @IBOutlet weak var departureToLayoverDuration: UILabel!
@@ -37,9 +39,8 @@ class OneWayDetailViewController: UIViewController {
     
     @IBOutlet weak var reachTime: UILabel!
     
-    
-    
-    @IBOutlet weak var layoverLabel: UILabel!
+
+    @IBOutlet weak var layerOverLabel: UILabel!
     
     @IBOutlet weak var secondLayoverDuration: UILabel!
     
@@ -68,7 +69,7 @@ class OneWayDetailViewController: UIViewController {
                 layoverAirportArrivalTime.text = selectedFlightInfo?.layoverAirport1ArrivalTime
                 layOverDepartureTime.text = selectedFlightInfo?.layoverAirport1DepartureTime
                 
-                layoverLabel.isHidden = true
+                layerOverLabel.isHidden = true
                 secondLayoverDuration.isHidden = true
                 layoverTwoAirport.isHidden = true
                 layover2AirportDepartureTime.isHidden = true
@@ -109,17 +110,16 @@ class OneWayDetailViewController: UIViewController {
                 layoverAirport.text = selectedFlightInfo?.arrivalAirport
                 layoverAirportArrivalTime.text = selectedFlightInfo?.arrivalTime
                 layoverDuration.isHidden = true
-                
-              
-                
+                layerOverLabel.isHidden = true
+                layOver.isHidden = true
                 layoverAirportStart.isHidden = true
                 layOverDepartureTime.isHidden = true
                 arrivalAirport.isHidden = true
                 layoverTwoAirport.isHidden = true
                 reachTime.isHidden = true
+                
                 secondLayoverDuration.isHidden = true
                 secondLayoverDuration.isHidden = false
-                layoverLabel.isHidden = true
                 secondLayoverDuration.isHidden = true
                 layoverTwoAirport.isHidden = true
                 layover2AirportDepartureTime.isHidden = true
