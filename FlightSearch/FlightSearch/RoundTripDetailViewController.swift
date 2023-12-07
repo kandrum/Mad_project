@@ -48,9 +48,11 @@ class RoundTripDetailViewController: UIViewController,UITableViewDelegate, UITab
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        performSegue(withIdentifier: "roundtriptooneway", sender: self)
+        let selectedFlightRoundTrip = [indexPath.row]
+        performSegue(withIdentifier: "selectedroudtripdetailsegue", sender: self)
     }
+    
+    
     
     
     @IBOutlet weak var roundTripTable: UITableView!
