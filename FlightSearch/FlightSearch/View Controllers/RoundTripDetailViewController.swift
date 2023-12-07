@@ -87,16 +87,16 @@ class RoundTripDetailViewController: UIViewController,UITableViewDelegate, UITab
                 totalAmountUsd:  totalAmount ?? 2343.89,
                                                     departureAirport: selectFlight?.returnDepartureAirport ?? "Unknown",
                                                     departureTime: selectFlight?.returnDepartureTime ?? "12:45",
-                                                    layoverAirport: selectFlight?.outboundfirstLayoverAirport ?? "Unknown",
+                                                    layoverAirport: selectFlight?.returnfirstLayoverAirport ?? "Unknown",
                                                     arrivalAirport: selectFlight?.returnArrivalAirport ?? "Unknown",
                                                     arrivalTime: selectFlight?.returnArrivalTime ?? "3:46",
                                                     layoverDuration: selectFlight?.returnfirstLayoverDuration ?? "4h",
                                                     layoverAirport1ArrivalTime: selectFlight?.returnfirstLayoverArrivalTime ?? "5:45",
                                                     layoverAirport1DepartureTime: selectFlight?.returnfirstlayoverDepartureTime ?? "1:34",
-                                                    secondlayoverAirport: selectFlight?.outboundsecondLayoverAirport ?? "Unknown",
-                secondLayoverDuration: "",
-               secondLayoverArrivalTime: "",
-              secondLayoverDepartureTime: ""
+                                                    secondlayoverAirport: selectFlight?.returnsecondLayoverAirport ?? "Unknown",
+                                                    secondLayoverDuration: selectFlight?.returnSecondLayoverDuration ?? "2h 12m",
+                                                    secondLayoverArrivalTime: selectFlight?.returnSecondLayoverArrivalTime ?? "2:34",
+                                                    secondLayoverDepartureTime: selectFlight?.returnSecondlayoverDepartureTime ?? "4:23"
              )
         }
         performSegue(withIdentifier: "selectedroudtripdetailsegue", sender: self)
