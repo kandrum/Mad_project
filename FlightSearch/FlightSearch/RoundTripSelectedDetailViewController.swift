@@ -9,9 +9,21 @@ import UIKit
 
 class RoundTripSelectedDetailViewController: UIViewController {
 
+    //var selectFlight:DisplayFlightInfo?
+    var selectFlight: DisplayFlightInfo?
+    
+    
+    @IBOutlet weak var airlines: UILabel!
+    
+    @IBOutlet weak var totalDuration: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientLayer()
+        
+        airlines.text = selectFlight?.airlineName
+        totalDuration.text = selectFlight?.totalDuration
+       
     }
     
     

@@ -55,8 +55,10 @@ class OneWayDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientLayer()
+        let stopsCountString = selectedFlightInfo!.stopoversCount
+        let stopsCount = Int(stopsCountString)
         if let flightInfo = selectedFlightInfo{
-            if selectedFlightInfo!.stopoversCount == 1 {
+            if stopsCount == 1 {
                 airwayFirstFlight.text = selectedFlightInfo?.airlineName
                 totalDuration.text = selectedFlightInfo?.totalDuration
                 departureAirport.text = selectedFlightInfo?.departureAirport
@@ -78,8 +80,7 @@ class OneWayDetailViewController: UIViewController {
             }
             
             
-            if(selectedFlightInfo!.stopoversCount >= 2)
-            {
+            if stopsCount ?? 2 >= 2{
                 airwayFirstFlight.text = selectedFlightInfo?.airlineName
                 totalDuration.text = selectedFlightInfo?.totalDuration
                 departureAirport.text = selectedFlightInfo?.departureAirport
@@ -101,7 +102,7 @@ class OneWayDetailViewController: UIViewController {
 
             }
             
-            if(selectedFlightInfo?.stopoversCount == 0)
+            if(stopsCount == 0)
             {
                 airwayFirstFlight.text = selectedFlightInfo?.airlineName
                 totalDuration.text = selectedFlightInfo?.totalDuration

@@ -11,6 +11,10 @@ class RoundTripDetailViewController: UIViewController,UITableViewDelegate, UITab
     
     var selectFlight:DisplayInfoRound?
     
+    var firstselectedFlight: DisplayFlightInfo?
+    
+    var secondselectedFlight: DisplayFlightInfo?
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         2
     }
@@ -48,10 +52,66 @@ class RoundTripDetailViewController: UIViewController,UITableViewDelegate, UITab
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedFlightRoundTrip = [indexPath.row]
+        
+        if(indexPath.row == 0)
+        {
+            
+            let totalAmountDouble = selectFlight!.totalAmount
+            let totalAmount = Double(totalAmountDouble)
+            firstselectedFlight = DisplayFlightInfo(airlineName: selectFlight?.departureAirline ?? "",
+                stopoversCount: selectFlight?.stopoversOutbound ?? "1",
+                totalDuration: selectFlight?.durationOutbound ?? "12h",
+                                                    totalAmountUsd:  totalAmount ?? 1782.45,
+                                                    departureAirport: selectFlight?.outboundDepartureAirport ?? "Unknown",
+                                                    departureTime: selectFlight?.outboundDepartureTime ?? "12:45",
+                  layoverAirport: "",
+                                                    arrivalAirport: selectFlight?.outboundArrivalAirport ?? "Unknown",
+                                                    arrivalTime: selectFlight?.outboundArrivalTime ?? "3:46",
+                                                    layoverDuration: selectFlight?.firstLayoverDuration ?? "4h",
+                 layoverAirport1ArrivalTime: "",
+                layoverAirport1DepartureTime: "",
+                secondlayoverAirport: "",
+                secondLayoverDuration: "",
+               secondLayoverArrivalTime: "",
+              secondLayoverDepartureTime: ""
+             )
+            
+        }
+        else
+        {
+            let totalAmountDouble = selectFlight!.totalAmount
+            let totalAmount = Double(totalAmountDouble)
+            firstselectedFlight = DisplayFlightInfo(airlineName: selectFlight?.returnAirline ?? "",
+                stopoversCount: selectFlight?.stopoversReturn ?? "1",
+                totalDuration: selectFlight?.durationReturn ?? "12h",
+                totalAmountUsd:  totalAmount ?? 2343.89,
+                                                    departureAirport: selectFlight?.returnDepartureAirport ?? "Unknown",
+                                                    departureTime: selectFlight?.returnDepartureTime ?? "12:45",
+                  layoverAirport: "",
+                                                    arrivalAirport: selectFlight?.returnArrivalAirport ?? "Unknown",
+                                                    arrivalTime: selectFlight?.returnArrivalTime ?? "3:46",
+                                                    layoverDuration: selectFlight?.firstLayoverDuration ?? "4h",
+                 layoverAirport1ArrivalTime: "",
+                layoverAirport1DepartureTime: "",
+                secondlayoverAirport: "",
+                secondLayoverDuration: "",
+               secondLayoverArrivalTime: "",
+              secondLayoverDepartureTime: ""
+             )
+        }
         performSegue(withIdentifier: "selectedroudtripdetailsegue", sender: self)
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "selectedroudtripdetailsegue"){
+            if let roundTripSelectDetailsVC = segue.destination as? RoundTripSelectedDetailViewController  {
+                roundTripSelectDetailsVC.selectFlight = firstselectedFlight
+                //roundTripSelectDetailsVC.selectFlight = firstselectedFlight
+                
+            }
+        }
+    }
     
     
     

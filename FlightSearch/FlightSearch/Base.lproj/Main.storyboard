@@ -519,6 +519,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="qtS-yy-Ya1"/>
+                    <connections>
+                        <outlet property="airlines" destination="dAx-Zx-NfZ" id="bVu-mO-e7C"/>
+                        <outlet property="totalDuration" destination="bAg-mn-m6G" id="U0S-wk-BLQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OQw-SJ-T98" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -229,7 +229,7 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                     let stopoversCount = leg.stopoverAirportCodes.count
                     let displayFlightInfo = DisplayFlightInfo(
                         airlineName: airline.name,
-                        stopoversCount: stopoversCount,
+                        stopoversCount: String(stopoversCount),
                         totalDuration: totalDuration,
                         totalAmountUsd: totalAmountUsd,
                         departureAirport: departureAirport.name, 
