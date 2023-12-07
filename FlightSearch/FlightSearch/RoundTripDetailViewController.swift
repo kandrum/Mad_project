@@ -28,8 +28,8 @@ class RoundTripDetailViewController: UIViewController,UITableViewDelegate, UITab
             cell.totalDuration.text = selectFlight?.durationOutbound
             cell.departureTime.text = selectFlight?.outboundDepartureTime
             cell.arrivalTime.text = selectFlight?.outboundArrivalTime
-            cell.departureAirport.text = selectFlight?.departureRoute
-            cell.arrivalAirport.text = selectFlight?.returnRoute
+            cell.departureAirport.text = selectFlight?.outboundDepartureAirport
+            cell.arrivalAirport.text = selectFlight?.outboundArrivalAirport
         }
         else
         {
@@ -37,8 +37,8 @@ class RoundTripDetailViewController: UIViewController,UITableViewDelegate, UITab
             cell.totalDuration.text = selectFlight?.durationReturn
             cell.departureTime.text = selectFlight?.returnDepartureTime
             cell.arrivalTime.text = selectFlight?.returnArrivalTime
-            cell.departureAirport.text = selectFlight?.returnRoute
-            cell.arrivalAirport.text = selectFlight?.departureRoute
+            cell.departureAirport.text = selectFlight?.returnDepartureAirport
+            cell.arrivalAirport.text = selectFlight?.returnArrivalAirport
         }
         return cell
         

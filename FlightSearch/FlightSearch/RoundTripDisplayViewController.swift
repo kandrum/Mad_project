@@ -254,11 +254,22 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
             let firstSegment = outboundLeg.segments.first
             let airlineCode =  outboundLeg.segments.first?.airlineCode ?? "Unknown"
             let outboundAirlineName = searchResponse.airlines.first(where: { $0.code == airlineCode }) ?? Airline(name: "Unknown", code: "Unknown")
+            let outboundDepartureairportCode = outboundLeg.segments.first?.departureAirportCode ?? "Unknown"
+            let outboundDepartureAirport = searchResponse.airports.first(where: { $0.code == outboundDepartureairportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
+            let outboundArrivalairportCode = outboundLeg.segments.last?.arrivalAirportCode ?? "Unknown"
+            let outboundArrivalAirport = searchResponse.airports.first(where: { $0.code == outboundArrivalairportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
+            
             
             
             let secondSegment = returnLeg.segments.first
             let airlineCode1 =  returnLeg.segments.first?.airlineCode ?? "Unknown"
             let returnAirlineName = searchResponse.airlines.first(where: { $0.code == airlineCode1 }) ?? Airline(name: "Unknown", code: "Unknown")
+            let returnDepartureairportCode = returnLeg.segments.first?.departureAirportCode ?? "Unknown"
+            let returnDepartureAirport = searchResponse.airports.first(where: { $0.code == returnDepartureairportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
+            let returnArrivalairportCode = returnLeg.segments.last?.arrivalAirportCode ?? "Unknown"
+            let returnArrivalAirport = searchResponse.airports.first(where: { $0.code == returnArrivalairportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
+            
+            
             
             
             let displayInfo = DisplayInfoRound(
@@ -274,7 +285,11 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
                 outboundDepartureTime: outboundDepartureTime,
                 outboundArrivalTime: outboundArrivalTime,
                 returnDepartureTime: returnDepartureTime,
-                returnArrivalTime: returnArrivalTime
+                returnArrivalTime: returnArrivalTime,
+                outboundDepartureAirport: outboundDepartureAirport.name,
+                outboundArrivalAirport: outboundArrivalAirport.name,
+                returnDepartureAirport: returnDepartureAirport.name,
+                returnArrivalAirport: returnArrivalAirport.name
             )
             
             displayInfoArray.append(displayInfo)
