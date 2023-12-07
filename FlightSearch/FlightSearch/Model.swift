@@ -21,6 +21,10 @@ struct DisplayFlightInfo {
     let layoverDuration: String
     let layoverAirport1ArrivalTime: String
     let layoverAirport1DepartureTime: String
+    let secondlayoverAirport: String
+    let secondLayoverDuration: String
+    let secondLayoverArrivalTime: String
+    let secondLayoverDepartureTime: String
 }
 
 struct FlightInfo: Codable {

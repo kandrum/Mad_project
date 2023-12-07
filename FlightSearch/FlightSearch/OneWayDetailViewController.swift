@@ -77,7 +77,7 @@ class OneWayDetailViewController: UIViewController {
             }
             
             
-            if(selectedFlightInfo?.stopoversCount == 2)
+            if(selectedFlightInfo!.stopoversCount >= 2)
             {
                 airwayFirstFlight.text = selectedFlightInfo?.airlineName
                 totalDuration.text = selectedFlightInfo?.totalDuration
@@ -89,12 +89,42 @@ class OneWayDetailViewController: UIViewController {
                 
                 layoverAirportStart.text = selectedFlightInfo?.layoverAirport
                 layOverDepartureTime.text = selectedFlightInfo?.layoverAirport1DepartureTime
-                
-                
-                
+                arrivalAirport.text = selectedFlightInfo?.secondlayoverAirport
+                layoverTwoAirport.text = selectedFlightInfo?.secondlayoverAirport
+                reachTime.text = selectedFlightInfo?.secondLayoverArrivalTime
+                secondLayoverDuration.text = selectedFlightInfo?.secondLayoverDuration
+                secondLayoverDuration.isHidden = false
+                layover2AirportDepartureTime.text = selectedFlightInfo?.secondLayoverDepartureTime
                 destionation.text = selectedFlightInfo?.arrivalAirport
                 destinationTime.text = selectedFlightInfo?.arrivalTime
 
+            }
+            
+            if(selectedFlightInfo?.stopoversCount == 0)
+            {
+                airwayFirstFlight.text = selectedFlightInfo?.airlineName
+                totalDuration.text = selectedFlightInfo?.totalDuration
+                departureAirport.text = selectedFlightInfo?.departureAirport
+                startTime.text = selectedFlightInfo?.departureTime
+                layoverAirport.text = selectedFlightInfo?.arrivalAirport
+                layoverAirportArrivalTime.text = selectedFlightInfo?.arrivalTime
+                layoverDuration.isHidden = true
+                
+              
+                
+                layoverAirportStart.isHidden = true
+                layOverDepartureTime.isHidden = true
+                arrivalAirport.isHidden = true
+                layoverTwoAirport.isHidden = true
+                reachTime.isHidden = true
+                secondLayoverDuration.isHidden = true
+                secondLayoverDuration.isHidden = false
+                layoverLabel.isHidden = true
+                secondLayoverDuration.isHidden = true
+                layoverTwoAirport.isHidden = true
+                layover2AirportDepartureTime.isHidden = true
+                destionation.isHidden = true
+                destinationTime.isHidden = true
             }
             
         }

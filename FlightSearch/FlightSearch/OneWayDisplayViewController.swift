@@ -285,9 +285,28 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                 let arrivalAirport = flightInfo.airports.first(where: { $0.code == leg.arrivalAirportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
                 let layoverAirportCode = leg.stopoverAirportCodes.first ?? "Unknown"
                 let layoverAirport = flightInfo.airports.first(where: { $0.code == layoverAirportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
-                let layoverTime = leg.stopoverDuration
+        
+                let layoverTime =  leg.segments[0].stopoverDurationMinutes
             let layoverAirport1ArrivalTime = extractTime(from:leg.segments[0].arrivalDateTime)
-                let layoverAirport1DepartureTime = extractTime(from: leg.segments[1].arrivalDateTime)
+                var layoverAirport1DepartureTime = ""
+                
+                var secondStopAirport : Airport? = nil
+                var secondLayoverDuration = ""
+                var secondLayoverArrivalTime = ""
+                var secondLayoverDepartureTime = ""
+                if leg.segments.count >= 2 {
+                    let secondStop = leg.segments[1]  // Index 1 corresponds to the second stop
+             
+                    let secondStopAirportCode = secondStop.arrivalAirportCode
+                    secondLayoverDuration = convertMinutesToHoursAndMinutes(minutes: secondStop.stopoverDurationMinutes)
+                    secondStopAirport = flightInfo.airports.first(where: { $0.code == secondStopAirportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
+                    secondLayoverArrivalTime = extractTime(from: leg.segments[0].arrivalDateTime) ?? "12:56"
+                    secondLayoverDepartureTime = extractTime(from: secondStop.departureDateTime) ?? "6:34"
+                    layoverAirport1DepartureTime = extractTime(from: leg.segments[1].arrivalDateTime) ?? "8:34"
+                    print("Second Stop Airport Code: \(arrivalAirport.name)")
+
+                }
+                
                 
                 // Find the fare that matches the trip ID.
                 if let fare = flightInfo.fares.first(where: { $0.tripId == trip.id }) {
@@ -303,9 +322,13 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                         layoverAirport: layoverAirport.name,
                         arrivalAirport: arrivalAirport.name,
                         arrivalTime: arrivalTime,
-                        layoverDuration: layoverTime,
+                        layoverDuration: convertMinutesToHoursAndMinutes(minutes: layoverTime),
                         layoverAirport1ArrivalTime: layoverAirport1ArrivalTime ?? "",
-                        layoverAirport1DepartureTime: layoverAirport1DepartureTime ?? ""
+                        layoverAirport1DepartureTime: layoverAirport1DepartureTime ?? "", secondlayoverAirport: secondStopAirport?.name ?? "",
+                        secondLayoverDuration: secondLayoverDuration,
+                        secondLayoverArrivalTime: secondLayoverArrivalTime,
+                        secondLayoverDepartureTime: secondLayoverDepartureTime
+                        
                     )
                     displayFlightInfoArray.append(displayFlightInfo)
                 } else {
@@ -321,6 +344,13 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
         
     }
     
+    func convertMinutesToHoursAndMinutes(minutes: Int) -> String {
+        let hours = minutes / 60
+        let remainingMinutes = minutes % 60
+        
+        return "\(hours)h \(remainingMinutes)m"
+    }
+
     @IBAction func filterByCheapest(_ sender: Any) {
         
         displayFlightInfoArray.sort { $0.totalAmountUsd < $1.totalAmountUsd }
@@ -369,15 +399,3 @@ func extractTime(from dateTimeString: String) -> String? {
     }
 }
     
-    /*
-     
-     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-
