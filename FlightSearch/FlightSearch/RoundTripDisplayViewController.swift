@@ -169,6 +169,18 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
             let outboundArrivalAirport = searchResponse.airports.first(where: { $0.code == outboundArrivalairportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
             
             let firstlayoverDuration = convertMinutesToHoursAndMinutes(minutes: outboundLeg.segments[0].stopoverDurationMinutes)
+            let returnlayoverTime =  convertMinutesToHoursAndMinutes(minutes: returnLeg.segments[0].stopoverDurationMinutes)
+            
+            let outboundFirstlayoverAirportCode = outboundLeg.stopoverAirportCodes.first ?? "Unknown"
+            let outboundFirstlayoverAirport = searchResponse.airports.first(where: { $0.code == outboundFirstlayoverAirportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
+            //let outboundFirstlayoverFlightArrivalTime = searchResponse.
+            
+            
+            let layoverTime =  outboundLeg.segments[0].stopoverDurationMinutes
+            let outboundlayoverAirport1ArrivalTime = extractTime(from:outboundLeg.segments[0].arrivalDateTime) ?? "12:23"
+            
+           
+            
             
             
             let secondSegment = returnLeg.segments.first
@@ -179,7 +191,7 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
             let returnArrivalairportCode = returnLeg.segments.last?.arrivalAirportCode ?? "Unknown"
             let returnArrivalAirport = searchResponse.airports.first(where: { $0.code == returnArrivalairportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
             
-            
+        
             
             
             
@@ -202,7 +214,15 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
                 outboundArrivalAirport: outboundArrivalAirport.name,
                 returnDepartureAirport: returnDepartureAirport.name,
                 returnArrivalAirport: returnArrivalAirport.name,
-                firstLayoverDuration: firstlayoverDuration
+                outboundfirstLayoverDuration: firstlayoverDuration,
+                outboundfirstLayoverAirport: outboundFirstlayoverAirport.name,
+                outboundfirstLayoverArrivalTime: outboundlayoverAirport1ArrivalTime,
+                outboundfirstLayoverDepartureTime: "",
+                outboundsecondLayoverDuration: "",
+                outboundsecondLayoverAirport: "",
+                outboundsecondLayoverArrivalTime: "",
+                outboundsecondLayoverDepartureTime: "",
+                returnfirstLayoverDuration: returnlayoverTime
             )
             
             displayInfoArray.append(displayInfo)
@@ -265,6 +285,19 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
             roundTripTable.reloadData()
 }
     
+    func extractTime(from dateTimeString: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        
+        if let dateTime = dateFormatter.date(from: dateTimeString) {
+            dateFormatter.dateFormat = "HH:mm"
+            let time = dateFormatter.string(from: dateTime)
+            return time
+        } else {
+            print("Error parsing date")
+            return nil
+        }
+    }
     
     func convertMinutesToHoursAndMinutes(minutes: Int) -> String {
         let hours = minutes / 60

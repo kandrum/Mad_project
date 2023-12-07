@@ -64,11 +64,11 @@ class RoundTripDetailViewController: UIViewController,UITableViewDelegate, UITab
                                                     totalAmountUsd:  totalAmount ?? 1782.45,
                                                     departureAirport: selectFlight?.outboundDepartureAirport ?? "Unknown",
                                                     departureTime: selectFlight?.outboundDepartureTime ?? "12:45",
-                  layoverAirport: "",
+                                                    layoverAirport: selectFlight?.outboundfirstLayoverAirport ?? "Unknown",
                                                     arrivalAirport: selectFlight?.outboundArrivalAirport ?? "Unknown",
                                                     arrivalTime: selectFlight?.outboundArrivalTime ?? "3:46",
-                                                    layoverDuration: selectFlight?.firstLayoverDuration ?? "4h",
-                 layoverAirport1ArrivalTime: "",
+                                                    layoverDuration: selectFlight?.outboundfirstLayoverDuration ?? "4h",
+                                                    layoverAirport1ArrivalTime: selectFlight?.outboundfirstLayoverArrivalTime ?? "3:45",
                 layoverAirport1DepartureTime: "",
                 secondlayoverAirport: "",
                 secondLayoverDuration: "",
@@ -87,11 +87,11 @@ class RoundTripDetailViewController: UIViewController,UITableViewDelegate, UITab
                 totalAmountUsd:  totalAmount ?? 2343.89,
                                                     departureAirport: selectFlight?.returnDepartureAirport ?? "Unknown",
                                                     departureTime: selectFlight?.returnDepartureTime ?? "12:45",
-                  layoverAirport: "",
+                                                    layoverAirport: selectFlight?.outboundfirstLayoverAirport ?? "Unknown",
                                                     arrivalAirport: selectFlight?.returnArrivalAirport ?? "Unknown",
                                                     arrivalTime: selectFlight?.returnArrivalTime ?? "3:46",
-                                                    layoverDuration: selectFlight?.firstLayoverDuration ?? "4h",
-                 layoverAirport1ArrivalTime: "",
+                                                    layoverDuration: selectFlight?.returnfirstLayoverDuration ?? "4h",
+                                                    layoverAirport1ArrivalTime: selectFlight?.outboundfirstLayoverArrivalTime ?? "5:45",
                 layoverAirport1DepartureTime: "",
                 secondlayoverAirport: "",
                 secondLayoverDuration: "",
@@ -137,4 +137,6 @@ class RoundTripDetailViewController: UIViewController,UITableViewDelegate, UITab
         
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
+    
+    
 }

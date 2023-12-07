@@ -66,7 +66,9 @@ class RoundTripSelectedDetailViewController: UIViewController {
         startAirport.text = selectFlight?.departureAirport
         startTime.text = selectFlight?.departureTime
         firstLayoverDuration.text = selectFlight?.layoverDuration
-        
+        firstlayoverAirport.text = selectFlight?.layoverAirport
+        firstLayoverArrivalTime.text = selectFlight?.layoverAirport1ArrivalTime
+        firstLayoverport.text = selectFlight?.layoverAirport
         
         destinationAirport.text = selectFlight?.totalDuration
         arrivalTime.text = selectFlight?.arrivalTime
