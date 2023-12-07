@@ -67,8 +67,7 @@ class OneWayDetailViewController: UIViewController {
                 layoverAirportStart.text = selectedFlightInfo?.layoverAirport
                 layoverDuration.text = selectedFlightInfo?.layoverDuration
                 layoverAirportArrivalTime.text = selectedFlightInfo?.layoverAirport1ArrivalTime
-                layOverDepartureTime.text = selectedFlightInfo?.layoverAirport1DepartureTime
-                
+                layOverDepartureTime.text = selectedFlightInfo?.departureTime
                 layerOverLabel.isHidden = true
                 secondLayoverDuration.isHidden = true
                 layoverTwoAirport.isHidden = true
