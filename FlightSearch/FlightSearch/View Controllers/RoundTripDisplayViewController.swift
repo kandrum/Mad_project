@@ -96,7 +96,7 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
         let departureDateString = dateFormatter.string(from: departureDateRound)
         let returnDateString = dateFormatter.string(from: returnDateRound)
         
-        let urlString = "https://api.flightapi.io/roundtrip/657140382b921b5e70890adc/\(fromLocationRound)/\(toLocationRound)/\(departureDateString)/\(returnDateString)/1/0/1/\(cabinClassRound)/USD"
+        let urlString = "https://api.flightapi.io/roundtrip/6571ffb8c6eb315e7eeccc27/\(fromLocationRound)/\(toLocationRound)/\(departureDateString)/\(returnDateString)/1/0/1/\(cabinClassRound)/USD"
         
         
         
@@ -177,7 +177,7 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
             //let outboundFirstlayoverFlightArrivalTime = searchResponse.
             let outboundlayoverAirport1DepartureTime = extractTime(from:outboundLeg.segments[0].departureDateTime) ?? "1:34"
             
-            let returnlayoverAirport1DepartureTime = extractTime(from: returnLeg.segments[0].departureDateTime) ?? "1:34"
+            let returnlayoverAirport1DepartureTime = extractTime(from: returnLeg.segments[1].departureDateTime) ?? "1:34"
             
             let layoverTime =  outboundLeg.segments[0].stopoverDurationMinutes
             let outboundlayoverAirport1ArrivalTime = extractTime(from:outboundLeg.segments[0].arrivalDateTime) ?? "12:23"
@@ -229,7 +229,7 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
                 outboundsecondLayoverArrivalTime: "",
                 outboundsecondLayoverDepartureTime: "",
                 returnfirstLayoverDuration: returnlayoverTime,
-                returnfirstLayoverArrivalTime: returnlayoverAirport1ArrivalTime, returnfirstlayoverDepartureTime: ""
+                returnfirstLayoverArrivalTime: returnlayoverAirport1ArrivalTime, returnfirstlayoverDepartureTime: returnlayoverAirport1DepartureTime
             )
             
             displayInfoArray.append(displayInfo)

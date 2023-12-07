@@ -113,7 +113,7 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let departureDateString = dateFormatter.string(from: departureDate)
         
-        let urlString = "https://api.flightapi.io/onewaytrip/657140382b921b5e70890adc/\(fromLocation)/\(toLocation)/\(departureDateString)/1/0/0/\(cabinClass)/USD"
+        let urlString = "https://api.flightapi.io/onewaytrip/6571ffb8c6eb315e7eeccc27/\(fromLocation)/\(toLocation)/\(departureDateString)/1/0/0/\(cabinClass)/USD"
         
         return URL(string: urlString)
     }

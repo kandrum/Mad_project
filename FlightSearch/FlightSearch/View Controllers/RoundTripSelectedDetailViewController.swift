@@ -60,18 +60,78 @@ class RoundTripSelectedDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientLayer()
+        let stopsCountString = selectFlight!.stopoversCount
+        let stopsCount = Int(stopsCountString)
+        if( stopsCount == 2)
+        {
+            airlines.text = selectFlight?.airlineName
+            totalDuration.text = selectFlight?.totalDuration
+            startAirport.text = selectFlight?.departureAirport
+            startTime.text = selectFlight?.departureTime
+            firstLayoverDuration.text = selectFlight?.layoverDuration
+            firstlayoverAirport.text = selectFlight?.layoverAirport
+            firstLayoverArrivalTime.text = selectFlight?.layoverAirport1ArrivalTime
+            firstLayoverport.text = selectFlight?.layoverAirport
+            
+            destinationAirport.text = selectFlight?.arrivalAirport
+            arrivalTime.text = selectFlight?.arrivalTime
+        }
         
-        airlines.text = selectFlight?.airlineName
-        totalDuration.text = selectFlight?.totalDuration
-        startAirport.text = selectFlight?.departureAirport
-        startTime.text = selectFlight?.departureTime
-        firstLayoverDuration.text = selectFlight?.layoverDuration
-        firstlayoverAirport.text = selectFlight?.layoverAirport
-        firstLayoverArrivalTime.text = selectFlight?.layoverAirport1ArrivalTime
-        firstLayoverport.text = selectFlight?.layoverAirport
+        if( stopsCount == 1)
+        {
+            airlines.text = selectFlight?.airlineName
+            totalDuration.text = selectFlight?.totalDuration
+            startAirport.text = selectFlight?.departureAirport
+            startTime.text = selectFlight?.departureTime
+            firstLayoverDuration.text = selectFlight?.layoverDuration
+            firstlayoverAirport.text = selectFlight?.layoverAirport
+            firstLayoverArrivalTime.text = selectFlight?.layoverAirport1ArrivalTime
+            firstLayoverport.text = selectFlight?.layoverAirport
+            firstLayoverDepartureTime.text = selectFlight?.layoverAirport1DepartureTime
+            
+            destinationAirport.text = selectFlight?.arrivalAirport
+            secondLayoverAiport.text = selectFlight?.arrivalAirport
+            secondLayoverArrivalTime.text = selectFlight?.arrivalTime
+            
+            secondLayoverLabel.isHidden = true
+            secondLayoverDuration.isHidden = true
+            secondLayoverport.isHidden = true
+           
+            
+            secondLayoverDepartureTime.isHidden=true
+            
+            destinationAirport.isHidden = true
+            arrivalTime.isHidden = true
+
+        }
         
-        destinationAirport.text = selectFlight?.arrivalAirport
-        arrivalTime.text = selectFlight?.arrivalTime
+        if( stopsCount == 0)
+        {
+            airlines.text = selectFlight?.airlineName
+            totalDuration.text = selectFlight?.totalDuration
+            startAirport.text = selectFlight?.departureAirport
+            startTime.text = selectFlight?.departureTime
+            firstlayoverAirport.text = selectFlight?.arrivalAirport
+            firstLayoverArrivalTime.text = selectFlight?.arrivalTime
+            
+            firstLayoverlabel.isHidden = true
+            firstLayoverDuration.isHidden = true
+            firstLayoverport.isHidden = true
+            firstLayoverDepartureTime.isHidden = true
+            secondLayoverAiport.isHidden=true
+            secondLayoverDepartureTime.isHidden=true
+            
+            secondLayoverLabel.isHidden = true
+            secondLayoverDuration.isHidden = true
+            secondLayoverport.isHidden = true
+           
+            
+            secondLayoverArrivalTime.isHidden=true
+            
+            destinationAirport.isHidden = true
+            arrivalTime.isHidden = true
+        }
+        
 
        
     }

@@ -92,7 +92,7 @@ class RoundTripDetailViewController: UIViewController,UITableViewDelegate, UITab
                                                     arrivalTime: selectFlight?.returnArrivalTime ?? "3:46",
                                                     layoverDuration: selectFlight?.returnfirstLayoverDuration ?? "4h",
                                                     layoverAirport1ArrivalTime: selectFlight?.returnfirstLayoverArrivalTime ?? "5:45",
-                layoverAirport1DepartureTime: "",
+                                                    layoverAirport1DepartureTime: selectFlight?.returnfirstlayoverDepartureTime ?? "1:34",
                 secondlayoverAirport: "",
                 secondLayoverDuration: "",
                secondLayoverArrivalTime: "",
