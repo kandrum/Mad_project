@@ -246,6 +246,10 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
             }
             
             let totalAmountUsd = fare.price.totalAmountUsd
+            let outboundDepartureTime = outboundLeg.departureTime
+            let outboundArrivalTime = outboundLeg.arrivalTime
+            let returnDepartureTime = returnLeg.departureTime
+            let returnArrivalTime = returnLeg.arrivalTime
             
             let firstSegment = outboundLeg.segments.first
             let airlineCode =  outboundLeg.segments.first?.airlineCode ?? "Unknown"
@@ -266,7 +270,11 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
                 stopoversOutbound: String(outboundLeg.stopoversCount),
                 stopoversReturn: String(returnLeg.stopoversCount),
                 durationOutbound: outboundLeg.duration,
-                durationReturn: returnLeg.duration
+                durationReturn: returnLeg.duration,
+                outboundDepartureTime: outboundDepartureTime,
+                outboundArrivalTime: outboundArrivalTime,
+                returnDepartureTime: returnDepartureTime,
+                returnArrivalTime: returnArrivalTime
             )
             
             displayInfoArray.append(displayInfo)
@@ -275,6 +283,15 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
         return displayInfoArray
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "roundTripDetailsSegue"){
+            if let roundTripDetailsVC = segue.destination as? RoundTripDetailViewController ,let selectedIndexPath = roundTripTable.indexPathForSelectedRow {
+                let selectedRoundTrip = displayFlightInfoArrayRound[selectedIndexPath.row]
+                roundTripDetailsVC.selectFlight = selectedFlightInfo
+                
+            }
+        }
+    }
     private func addGradientLayer() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds

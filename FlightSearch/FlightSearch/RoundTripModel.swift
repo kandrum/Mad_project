@@ -28,4 +28,8 @@ struct DisplayInfoRound {
     let stopoversReturn: String
     let durationOutbound: String
     let durationReturn: String
+    let outboundDepartureTime: String
+    let outboundArrivalTime: String
+    let returnDepartureTime: String
+    let returnArrivalTime:String
 }

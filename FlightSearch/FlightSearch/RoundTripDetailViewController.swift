@@ -9,6 +9,7 @@ import UIKit
 
 class RoundTripDetailViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
+    var selectFlight:DisplayInfoRound?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         2
@@ -16,17 +17,35 @@ class RoundTripDetailViewController: UIViewController,UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "detailroundtripcell", for: indexPath) as? RoundTripTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "detailroundtripcell", for: indexPath) as? RoundTripDetailCellTableViewCell else {
             fatalError("Unable to dequeue RoundTripTableViewCell")
         }
         
-        
+        print(selectFlight?.departureRoute)
+        if((indexPath.row) == 0)
+        {
+            cell.airlines.text = selectFlight?.departureAirline
+            cell.totalDuration.text = selectFlight?.durationOutbound
+            cell.departureTime.text = selectFlight?.outboundDepartureTime
+            cell.arrivalTime.text = selectFlight?.outboundArrivalTime
+            cell.departureAirport.text = selectFlight?.departureRoute
+            cell.arrivalAirport.text = selectFlight?.returnRoute
+        }
+        else
+        {
+            cell.airlines.text = selectFlight?.returnAirline
+            cell.totalDuration.text = selectFlight?.durationReturn
+            cell.departureTime.text = selectFlight?.returnDepartureTime
+            cell.arrivalTime.text = selectFlight?.returnArrivalTime
+            cell.departureAirport.text = selectFlight?.returnRoute
+            cell.arrivalAirport.text = selectFlight?.departureRoute
+        }
         return cell
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        return 300
     }
     
     
