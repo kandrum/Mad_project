@@ -17,12 +17,60 @@ class RoundTripSelectedDetailViewController: UIViewController {
     
     @IBOutlet weak var totalDuration: UILabel!
     
+    @IBOutlet weak var startAirport: UILabel!
+    
+    @IBOutlet weak var startTime: UILabel!
+    
+    @IBOutlet weak var firstlayoverAirport: UILabel!
+    
+
+    @IBOutlet weak var firstLayoverArrivalTime: UILabel!
+    
+    
+    
+    @IBOutlet weak var firstLayoverDuration: UILabel!
+    
+    
+    @IBOutlet weak var firstLayoverlabel: UILabel!
+    @IBOutlet weak var firstLayoverport: UILabel!
+    
+    
+    @IBOutlet weak var firstLayoverDepartureTime: UILabel!
+    
+    @IBOutlet weak var secondLayoverAiport: UILabel!
+    
+    @IBOutlet weak var secondLayoverArrivalTime: UILabel!
+    
+    
+    @IBOutlet weak var secondLayoverLabel: UILabel!
+    
+    
+    @IBOutlet weak var secondLayoverDuration: UILabel!
+    
+    
+    @IBOutlet weak var secondLayoverport: UILabel!
+    
+    
+    @IBOutlet weak var secondLayoverDepartureTime: UILabel!
+    
+    @IBOutlet weak var destinationAirport: UILabel!
+    
+    @IBOutlet weak var arrivalTime: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientLayer()
         
         airlines.text = selectFlight?.airlineName
         totalDuration.text = selectFlight?.totalDuration
+        startAirport.text = selectFlight?.departureAirport
+        startTime.text = selectFlight?.departureTime
+        firstLayoverDuration.text = selectFlight?.layoverDuration
+        
+        
+        destinationAirport.text = selectFlight?.totalDuration
+        arrivalTime.text = selectFlight?.arrivalTime
+
        
     }
     
