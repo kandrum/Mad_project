@@ -168,6 +168,7 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
             let outboundArrivalairportCode = outboundLeg.segments.last?.arrivalAirportCode ?? "Unknown"
             let outboundArrivalAirport = searchResponse.airports.first(where: { $0.code == outboundArrivalairportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
             
+            let firstlayoverDuration = convertMinutesToHoursAndMinutes(minutes: outboundLeg.segments[0].stopoverDurationMinutes)
             
             
             let secondSegment = returnLeg.segments.first
@@ -177,6 +178,8 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
             let returnDepartureAirport = searchResponse.airports.first(where: { $0.code == returnDepartureairportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
             let returnArrivalairportCode = returnLeg.segments.last?.arrivalAirportCode ?? "Unknown"
             let returnArrivalAirport = searchResponse.airports.first(where: { $0.code == returnArrivalairportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
+            
+            
             
             
             
@@ -198,7 +201,8 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
                 outboundDepartureAirport: outboundDepartureAirport.name,
                 outboundArrivalAirport: outboundArrivalAirport.name,
                 returnDepartureAirport: returnDepartureAirport.name,
-                returnArrivalAirport: returnArrivalAirport.name
+                returnArrivalAirport: returnArrivalAirport.name,
+                firstLayoverDuration: firstlayoverDuration
             )
             
             displayInfoArray.append(displayInfo)
@@ -260,5 +264,14 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
             
             roundTripTable.reloadData()
 }
+    
+    
+    func convertMinutesToHoursAndMinutes(minutes: Int) -> String {
+        let hours = minutes / 60
+        let remainingMinutes = minutes % 60
+        
+        return "\(hours)h \(remainingMinutes)m"
+    }
+
     
 }

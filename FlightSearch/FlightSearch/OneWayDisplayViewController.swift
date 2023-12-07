@@ -198,7 +198,7 @@ class OneWayDisplayViewController: UIViewController,UITableViewDelegate, UITable
                 let layoverAirport = flightInfo.airports.first(where: { $0.code == layoverAirportCode }) ?? Airport(name: "Unknown", code: "Unknown", cityCode: "Unknown")
         
                 let layoverTime =  leg.segments[0].stopoverDurationMinutes
-            let layoverAirport1ArrivalTime = extractTime(from:leg.segments[0].arrivalDateTime)
+                let layoverAirport1ArrivalTime = extractTime(from:leg.segments[0].arrivalDateTime)
                 var layoverAirport1DepartureTime = ""
                 
                 var secondStopAirport : Airport? = nil

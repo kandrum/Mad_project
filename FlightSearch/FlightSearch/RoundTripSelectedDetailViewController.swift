@@ -12,9 +12,10 @@ class RoundTripSelectedDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradientLayer()
-
-        // Do any additional setup after loading the view.
     }
+    
+    
+    
     
     private func addGradientLayer() {
         let gradientLayer = CAGradientLayer()
