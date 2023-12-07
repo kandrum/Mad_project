@@ -303,6 +303,10 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
             roundTripTable.reloadData()
         }
 
+    @IBAction func filterByShortestDuration(_ sender: Any) {
+        
+    }
+
         
         
     
