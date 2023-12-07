@@ -9,6 +9,8 @@ import UIKit
 
 class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
+    var selectedFlightInfo: DisplayInfoRound?
+    
 //    struct FlightSearchResponse: Decodable {
 //        let legs: [Leg]
 //        let trips: [Trip]
@@ -193,6 +195,7 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedFlightInfo = displayFlightInfoArrayRound[indexPath.row]
        performSegue(withIdentifier: "roundTripDetailsSegue", sender: self)
     }
     

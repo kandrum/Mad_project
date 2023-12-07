@@ -26,6 +26,7 @@
 		5CBA28DE2AE7500E007332BF /* AirportNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA28DD2AE7500E007332BF /* AirportNameTableViewCell.swift */; };
 		5CBDF86F2B0974FE00DD8012 /* RoundTripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBDF86E2B0974FE00DD8012 /* RoundTripTableViewCell.swift */; };
 		7FFC1A402AE9BDAE0089F063 /* OneWayDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC1A3F2AE9BDAE0089F063 /* OneWayDisplayViewController.swift */; };
+		83B1E6602B21F7A700CD3FFA /* RoundTripDetailCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B1E65F2B21F7A700CD3FFA /* RoundTripDetailCellTableViewCell.swift */; };
 		83C5FB612B21704500BD72DB /* RoundTripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5FB602B21704500BD72DB /* RoundTripModel.swift */; };
 		9E1B7D972B1533DF009D0395 /* RoundTripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1B7D962B1533DF009D0395 /* RoundTripDetailViewController.swift */; };
 		9E1B7D992B153FDC009D0395 /* OneWayDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1B7D982B153FDC009D0395 /* OneWayDetailViewController.swift */; };
@@ -73,6 +74,7 @@
 		5CBA28DD2AE7500E007332BF /* AirportNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportNameTableViewCell.swift; sourceTree = "<group>"; };
 		5CBDF86E2B0974FE00DD8012 /* RoundTripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTripTableViewCell.swift; sourceTree = "<group>"; };
 		7FFC1A3F2AE9BDAE0089F063 /* OneWayDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneWayDisplayViewController.swift; sourceTree = "<group>"; };
+		83B1E65F2B21F7A700CD3FFA /* RoundTripDetailCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTripDetailCellTableViewCell.swift; sourceTree = "<group>"; };
 		83C5FB602B21704500BD72DB /* RoundTripModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTripModel.swift; sourceTree = "<group>"; };
 		9E1B7D962B1533DF009D0395 /* RoundTripDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTripDetailViewController.swift; sourceTree = "<group>"; };
 		9E1B7D982B153FDC009D0395 /* OneWayDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneWayDetailViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				9E1B7D982B153FDC009D0395 /* OneWayDetailViewController.swift */,
 				9E1B7D9A2B1541F7009D0395 /* Model.swift */,
 				83C5FB602B21704500BD72DB /* RoundTripModel.swift */,
+				83B1E65F2B21F7A700CD3FFA /* RoundTripDetailCellTableViewCell.swift */,
 			);
 			path = FlightSearch;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E1B7D9B2B1541F7009D0395 /* Model.swift in Sources */,
+				83B1E6602B21F7A700CD3FFA /* RoundTripDetailCellTableViewCell.swift in Sources */,
 				5C60261F2ADF6C670015577F /* OneWayViewController.swift in Sources */,
 				5C9258B52ADE170200E067D9 /* AppDelegate.swift in Sources */,
 				5CBA28DE2AE7500E007332BF /* AirportNameTableViewCell.swift in Sources */,

@@ -7,10 +7,36 @@
 
 import UIKit
 
-class RoundTripDetailViewController: UIViewController {
+class RoundTripDetailViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "detailroundtripcell", for: indexPath) as? RoundTripTableViewCell else {
+            fatalError("Unable to dequeue RoundTripTableViewCell")
+        }
+        
+        
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 400
+    }
+    
+    
+    
+    @IBOutlet weak var roundTripTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        roundTripTable.delegate = self
+        roundTripTable.dataSource = self
         addGradientLayer()
     }
    
