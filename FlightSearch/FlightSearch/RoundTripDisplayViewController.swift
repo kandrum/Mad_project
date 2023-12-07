@@ -185,7 +185,7 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
         let departureDateString = dateFormatter.string(from: departureDateRound)
         let returnDateString = dateFormatter.string(from: returnDateRound)
         
-        let urlString = "https://api.flightapi.io/roundtrip/6564f5d42a16c63beb7af6b0/\(fromLocationRound)/\(toLocationRound)/\(departureDateString)/\(returnDateString)/1/0/1/\(cabinClassRound)/USD"
+        let urlString = "https://api.flightapi.io/roundtrip/657140382b921b5e70890adc/\(fromLocationRound)/\(toLocationRound)/\(departureDateString)/\(returnDateString)/1/0/1/\(cabinClassRound)/USD"
         
         
         
@@ -307,6 +307,15 @@ class RoundTripDisplayViewController: UIViewController, UITableViewDelegate, UIT
 
             roundTripTable.reloadData()
         }
+
+    @IBAction func filterByShortestDuration(_ sender: Any) {
+        
+       
+            displayFlightInfoArrayRound.sort { ($0.durationOutbound + $0.durationReturn) < ($1.durationOutbound + $1.durationReturn) }
+
+            
+            roundTripTable.reloadData()
+}
 
         
         

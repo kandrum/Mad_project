@@ -40,6 +40,7 @@ class RoundTripViewController: UIViewController,UITextFieldDelegate,UIPickerView
         cabinPickerRound.delegate = self
         cabinPickerRound.dataSource = self
         cabinRound.inputView = cabinPickerRound
+        cabinRound.text = cabinOptionsRound[0]
         
         let toolBarRound = UIToolbar()
         toolBarRound.sizeToFit()
